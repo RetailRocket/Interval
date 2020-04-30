@@ -29,23 +29,5 @@ namespace Interval
                        point: point,
                        comparer: comparer) <= 0;
         }
-
-        public int Compare(
-            Interval<TPoint> other,
-            IComparer<TPoint> pointComparer)
-        {
-            var lowerBoundComparisonResult = this.LowerBound
-                .Compare(
-                    other: other.LowerBound,
-                    pointComparer: pointComparer);
-
-            if (lowerBoundComparisonResult != 0)
-                return lowerBoundComparisonResult;
-
-            return this.UpperBound
-                .Compare(
-                    other: other.UpperBound,
-                    pointComparer: pointComparer);
-        }
     }
 }

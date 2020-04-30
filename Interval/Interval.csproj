@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <LangVersion>8</LangVersion>
-        <Nullable>disable</Nullable>
+        <Nullable>enable</Nullable>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageVersion>0.0.1</PackageVersion>
         <Authors>Andrey Chizh, Artem Noskov</Authors>

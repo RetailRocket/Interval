@@ -1,6 +1,7 @@
 namespace UnitTests.IntervalTests.Comparison
 {
     using System.Collections.Generic;
+    using Interval;
     using Interval.IntervalBound.LowerBound;
     using Interval.IntervalBound.UpperBound;
     using Xunit;
@@ -17,6 +18,9 @@ namespace UnitTests.IntervalTests.Comparison
             int lowerBoundaryPoint,
             int upperBoundaryPoint)
         {
+            var intervalComparer = new IntervalComparer<int>(
+                pointComparer: Comparer<int>.Default);
+
             var intervalA = new Interval.Interval<int>(
                 lowerBound: new ClosedLowerBound<int>(lowerBoundaryPoint),
                 upperBound: new ClosedUpperBound<int>(upperBoundaryPoint));
@@ -25,9 +29,11 @@ namespace UnitTests.IntervalTests.Comparison
                 lowerBound: new ClosedLowerBound<int>(lowerBoundaryPoint),
                 upperBound: new ClosedUpperBound<int>(upperBoundaryPoint));
 
-            intervalA.Compare(
-                other: intervalB,
-                pointComparer: Comparer<int>.Default);
+            Assert.Equal(
+                expected: 0,
+                actual: intervalComparer.Compare(
+                    left: intervalA,
+                    right: intervalB));
         }
 
         [Theory]
@@ -40,6 +46,9 @@ namespace UnitTests.IntervalTests.Comparison
             int lowerBoundaryPoint,
             int upperBoundaryPoint)
         {
+            var intervalComparer = new IntervalComparer<int>(
+                pointComparer: Comparer<int>.Default);
+
             var intervalA = new Interval.Interval<int>(
                 lowerBound: new OpenLowerBound<int>(lowerBoundaryPoint),
                 upperBound: new OpenUpperBound<int>(upperBoundaryPoint));
@@ -48,9 +57,11 @@ namespace UnitTests.IntervalTests.Comparison
                 lowerBound: new OpenLowerBound<int>(lowerBoundaryPoint),
                 upperBound: new OpenUpperBound<int>(upperBoundaryPoint));
 
-            intervalA.Compare(
-                other: intervalB,
-                pointComparer: Comparer<int>.Default);
+            Assert.Equal(
+                expected: 0,
+                actual: intervalComparer.Compare(
+                    left: intervalA,
+                    right: intervalB));
         }
 
         [Theory]
@@ -63,6 +74,9 @@ namespace UnitTests.IntervalTests.Comparison
             int lowerBoundaryPoint,
             int upperBoundaryPoint)
         {
+            var intervalComparer = new IntervalComparer<int>(
+                pointComparer: Comparer<int>.Default);
+
             var intervalA = new Interval.Interval<int>(
                 lowerBound: new ClosedLowerBound<int>(lowerBoundaryPoint),
                 upperBound: new OpenUpperBound<int>(upperBoundaryPoint));
@@ -71,9 +85,11 @@ namespace UnitTests.IntervalTests.Comparison
                 lowerBound: new ClosedLowerBound<int>(lowerBoundaryPoint),
                 upperBound: new OpenUpperBound<int>(upperBoundaryPoint));
 
-            intervalA.Compare(
-                other: intervalB,
-                pointComparer: Comparer<int>.Default);
+            Assert.Equal(
+                expected: 0,
+                actual: intervalComparer.Compare(
+                    left: intervalA,
+                    right: intervalB));
 
             var intervalС = new Interval.Interval<int>(
                 lowerBound: new OpenLowerBound<int>(lowerBoundaryPoint),
@@ -83,9 +99,11 @@ namespace UnitTests.IntervalTests.Comparison
                 lowerBound: new OpenLowerBound<int>(lowerBoundaryPoint),
                 upperBound: new ClosedUpperBound<int>(upperBoundaryPoint));
 
-            intervalA.Compare(
-                other: intervalB,
-                pointComparer: Comparer<int>.Default);
+            Assert.Equal(
+                expected: 0,
+                actual: intervalComparer.Compare(
+                    left: intervalA,
+                    right: intervalB));
         }
 
         [Theory]
@@ -96,6 +114,9 @@ namespace UnitTests.IntervalTests.Comparison
         public void MixedInfinityBoundaryWithOpenClosedBoundaryIntervalCanBeEqual(
             int boundaryPoint)
         {
+            var intervalComparer = new IntervalComparer<int>(
+                pointComparer: Comparer<int>.Default);
+
             var intervalA = new Interval.Interval<int>(
                 lowerBound: new InfinityLowerBound<int>(),
                 upperBound: new OpenUpperBound<int>(boundaryPoint));
@@ -104,9 +125,11 @@ namespace UnitTests.IntervalTests.Comparison
                 lowerBound: new InfinityLowerBound<int>(),
                 upperBound: new OpenUpperBound<int>(boundaryPoint));
 
-            intervalA.Compare(
-                other: intervalB,
-                pointComparer: Comparer<int>.Default);
+            Assert.Equal(
+                expected: 0,
+                actual: intervalComparer.Compare(
+                    left: intervalA,
+                    right: intervalB));
 
             var intervalС = new Interval.Interval<int>(
                 lowerBound: new OpenLowerBound<int>(boundaryPoint),
@@ -116,14 +139,19 @@ namespace UnitTests.IntervalTests.Comparison
                 lowerBound: new OpenLowerBound<int>(boundaryPoint),
                 upperBound: new InfinityUpperBound<int>());
 
-            intervalA.Compare(
-                other: intervalB,
-                pointComparer: Comparer<int>.Default);
+            Assert.Equal(
+                expected: 0,
+                actual: intervalComparer.Compare(
+                    left: intervalA,
+                    right: intervalB));
         }
 
         [Fact]
         public void InfinityBoundariesIntervalAreEqual()
         {
+            var intervalComparer = new IntervalComparer<int>(
+                pointComparer: Comparer<int>.Default);
+
             var intervalA = new Interval.Interval<int>(
                 lowerBound: new InfinityLowerBound<int>(),
                 upperBound: new InfinityUpperBound<int>());
@@ -134,9 +162,9 @@ namespace UnitTests.IntervalTests.Comparison
 
             Assert.Equal(
                 expected: 0,
-                actual: intervalA.Compare(
-                    other: intervalB,
-                    pointComparer: Comparer<int>.Default));
+                actual: intervalComparer.Compare(
+                    left: intervalA,
+                    right: intervalB));
         }
     }
 }

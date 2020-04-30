@@ -13,7 +13,7 @@ namespace Interval.IntervalBound.UpperBound
 
         public TPoint Point { get; }
 
-        public override int CompareToPoint(
+        public int CompareToPoint(
             TPoint point,
             IComparer<TPoint> comparer)
         {

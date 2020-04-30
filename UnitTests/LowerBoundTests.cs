@@ -19,9 +19,12 @@ namespace UnitTests
         public void WhenClosedAndOpenEqualClosedIsLess(
             int value)
         {
-            var comparisonsA = new ClosedLowerBound<int>(value).Compare(
-                new OpenLowerBound<int>(value),
+            var lowerBoundComparer = new LowerBoundComparer<int>(
                 pointComparer: Comparer<int>.Default);
+
+            var comparisonsA = lowerBoundComparer.Compare(
+                left: new ClosedLowerBound<int>(value),
+                right: new OpenLowerBound<int>(value));
 
             Assert.Equal(
                 expected: -1,
@@ -38,9 +41,12 @@ namespace UnitTests
             int closedBorderValue,
             int openBorderValue)
         {
-            var comparisonsA = new ClosedLowerBound<int>(closedBorderValue).Compare(
-                new OpenLowerBound<int>(openBorderValue),
+            var lowerBoundComparer = new LowerBoundComparer<int>(
                 pointComparer: Comparer<int>.Default);
+
+            var comparisonsA = lowerBoundComparer.Compare(
+                left: new ClosedLowerBound<int>(closedBorderValue),
+                right: new OpenLowerBound<int>(openBorderValue));
 
             Assert.Equal(
                 expected: -1,
@@ -58,9 +64,12 @@ namespace UnitTests
             int closedBorderValue,
             int openBorderValue)
         {
-            var comparisonsA = new ClosedLowerBound<int>(closedBorderValue).Compare(
-                new OpenLowerBound<int>(openBorderValue),
+            var lowerBoundComparer = new LowerBoundComparer<int>(
                 pointComparer: Comparer<int>.Default);
+
+            var comparisonsA = lowerBoundComparer.Compare(
+                left: new ClosedLowerBound<int>(closedBorderValue),
+                right: new OpenLowerBound<int>(openBorderValue));
 
             Assert.Equal(
                 expected: -1,
@@ -77,9 +86,12 @@ namespace UnitTests
             int closedBorderValue,
             int openBorderValue)
         {
-            var comparisonsA = new ClosedLowerBound<int>(closedBorderValue).Compare(
-                new OpenLowerBound<int>(openBorderValue),
+            var lowerBoundComparer = new LowerBoundComparer<int>(
                 pointComparer: Comparer<int>.Default);
+
+            var comparisonsA = lowerBoundComparer.Compare(
+                left: new ClosedLowerBound<int>(closedBorderValue),
+                right: new OpenLowerBound<int>(openBorderValue));
 
             Assert.Equal(
                 expected: 1,
@@ -96,9 +108,12 @@ namespace UnitTests
             int closedBorderValue,
             int openBorderValue)
         {
-            var comparisonsA = new ClosedLowerBound<int>(closedBorderValue).Compare(
-                new OpenLowerBound<int>(openBorderValue),
+            var lowerBoundComparer = new LowerBoundComparer<int>(
                 pointComparer: Comparer<int>.Default);
+
+            var comparisonsA = lowerBoundComparer.Compare(
+                left: new ClosedLowerBound<int>(closedBorderValue),
+                right: new OpenLowerBound<int>(openBorderValue));
 
             Assert.Equal(
                 expected: 1,
@@ -113,12 +128,15 @@ namespace UnitTests
         [InlineData(int.MinValue)]
         [InlineData(-1000)]
         [InlineData(1000)]
-        public void InfinityIsAlwaysLessToAnyOpenBorder(
+        public void InfinityLowerBorderIsAlwaysLessToAnyOpenLowerBorder(
             int value)
         {
-            var comparisonsA = new InfinityLowerBound<int>().Compare(
-                new OpenLowerBound<int>(value),
+            var lowerBoundComparer = new LowerBoundComparer<int>(
                 pointComparer: Comparer<int>.Default);
+
+            var comparisonsA = lowerBoundComparer.Compare(
+                left: new InfinityLowerBound<int>(),
+                right: new OpenLowerBound<int>(value));
 
             Assert.Equal(
                 expected: -1,
@@ -133,12 +151,15 @@ namespace UnitTests
         [InlineData(int.MinValue)]
         [InlineData(-1000)]
         [InlineData(1000)]
-        public void InfinityIsAlwaysLessToAnyClosedBorder(
+        public void InfinityLowerBorderIsAlwaysLessToAnyCloseLowerBorder(
             int value)
         {
-            var comparisonsA = new InfinityLowerBound<int>().Compare(
-                new ClosedLowerBound<int>(value),
+            var lowerBoundComparer = new LowerBoundComparer<int>(
                 pointComparer: Comparer<int>.Default);
+
+            var comparisonsA = lowerBoundComparer.Compare(
+                left: new InfinityLowerBound<int>(),
+                right: new ClosedLowerBound<int>(value));
 
             Assert.Equal(
                 expected: -1,

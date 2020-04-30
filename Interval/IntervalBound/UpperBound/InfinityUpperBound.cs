@@ -5,7 +5,7 @@ namespace Interval.IntervalBound.UpperBound
     public class InfinityUpperBound<TPoint>
         : UpperBound<TPoint>
     {
-        public override int CompareToPoint(
+        public int CompareToPoint(
             TPoint point,
             IComparer<TPoint> comparer)
         {

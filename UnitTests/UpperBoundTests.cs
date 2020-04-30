@@ -19,9 +19,12 @@ namespace UnitTests
         public void WhenClosedAndOpenEqualClosedIsBigger(
             int value)
         {
-            var comparisonsA = new ClosedUpperBound<int>(value).Compare(
-                new OpenUpperBound<int>(value),
+            var UpperBoundComparer = new UpperBoundComparer<int>(
                 pointComparer: Comparer<int>.Default);
+
+            var comparisonsA = UpperBoundComparer.Compare(
+                left: new ClosedUpperBound<int>(value),
+                right: new OpenUpperBound<int>(value));
 
             Assert.Equal(
                 expected: 1,
@@ -38,9 +41,12 @@ namespace UnitTests
             int closedBorderValue,
             int openBorderValue)
         {
-            var comparisonsA = new ClosedUpperBound<int>(closedBorderValue).Compare(
-                new OpenUpperBound<int>(openBorderValue),
+            var UpperBoundComparer = new UpperBoundComparer<int>(
                 pointComparer: Comparer<int>.Default);
+
+            var comparisonsA = UpperBoundComparer.Compare(
+                left: new ClosedUpperBound<int>(closedBorderValue),
+                right: new OpenUpperBound<int>(openBorderValue));
 
             Assert.Equal(
                 expected: -1,
@@ -58,9 +64,12 @@ namespace UnitTests
             int closedBorderValue,
             int openBorderValue)
         {
-            var comparisonsA = new ClosedUpperBound<int>(closedBorderValue).Compare(
-                new OpenUpperBound<int>(openBorderValue),
+            var UpperBoundComparer = new UpperBoundComparer<int>(
                 pointComparer: Comparer<int>.Default);
+
+            var comparisonsA = UpperBoundComparer.Compare(
+                left: new ClosedUpperBound<int>(closedBorderValue),
+                right: new OpenUpperBound<int>(openBorderValue));
 
             Assert.Equal(
                 expected: -1,
@@ -77,9 +86,12 @@ namespace UnitTests
             int closedBorderValue,
             int openBorderValue)
         {
-            var comparisonsA = new ClosedUpperBound<int>(closedBorderValue).Compare(
-                new OpenUpperBound<int>(openBorderValue),
+            var UpperBoundComparer = new UpperBoundComparer<int>(
                 pointComparer: Comparer<int>.Default);
+
+            var comparisonsA = UpperBoundComparer.Compare(
+                left: new ClosedUpperBound<int>(closedBorderValue),
+                right: new OpenUpperBound<int>(openBorderValue));
 
             Assert.Equal(
                 expected: 1,
@@ -96,9 +108,12 @@ namespace UnitTests
             int closedBorderValue,
             int openBorderValue)
         {
-            var comparisonsA = new ClosedUpperBound<int>(closedBorderValue).Compare(
-                new OpenUpperBound<int>(openBorderValue),
+            var UpperBoundComparer = new UpperBoundComparer<int>(
                 pointComparer: Comparer<int>.Default);
+
+            var comparisonsA = UpperBoundComparer.Compare(
+                left: new ClosedUpperBound<int>(closedBorderValue),
+                right: new OpenUpperBound<int>(openBorderValue));
 
             Assert.Equal(
                 expected: 1,
@@ -113,12 +128,15 @@ namespace UnitTests
         [InlineData(int.MinValue)]
         [InlineData(-1000)]
         [InlineData(1000)]
-        public void InfinityIsAlwaysBiggerToAnyOpenBorder(
+        public void InfinityUpperBorderIsAlwaysBiggerToAnyOpenUpperBorder(
             int value)
         {
-            var comparisonsA = new InfinityUpperBound<int>().Compare(
-                new OpenUpperBound<int>(value),
+            var UpperBoundComparer = new UpperBoundComparer<int>(
                 pointComparer: Comparer<int>.Default);
+
+            var comparisonsA = UpperBoundComparer.Compare(
+                left: new InfinityUpperBound<int>(),
+                right: new OpenUpperBound<int>(value));
 
             Assert.Equal(
                 expected: 1,
@@ -133,12 +151,15 @@ namespace UnitTests
         [InlineData(int.MinValue)]
         [InlineData(-1000)]
         [InlineData(1000)]
-        public void InfinityIsAlwaysBiggerToAnyClosedBorder(
+        public void InfinityUpperBorderIsAlwaysBiggerToAnyCloseUpperBorder(
             int value)
         {
-            var comparisonsA = new InfinityUpperBound<int>().Compare(
-                new ClosedUpperBound<int>(value),
+            var UpperBoundComparer = new UpperBoundComparer<int>(
                 pointComparer: Comparer<int>.Default);
+
+            var comparisonsA = UpperBoundComparer.Compare(
+                left: new InfinityUpperBound<int>(),
+                right: new ClosedUpperBound<int>(value));
 
             Assert.Equal(
                 expected: 1,
