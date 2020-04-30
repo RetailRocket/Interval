@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <LangVersion>8</LangVersion>
+        <Nullable>disable</Nullable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageVersion>0.0.1</PackageVersion>
+        <Authors>Andrey Chizh, Artem Noskov</Authors>
+        <Company>Retail Rocket</Company>
+        <RepositoryUrl>https://github.com/RetailRocket/BoolExpressions</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <Title>
+            Interval Library Project
+        </Title>
+        <PackageDescription>
+            Library for creating and comparing intervals. Library support three types of boundaries: open, closed and infinity for both sides.
+        </PackageDescription>
+        <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    </PropertyGroup>
+    
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.2</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="LICENSE.txt" Pack="true" PackagePath="LICENSE.txt" />
+    </ItemGroup>
+
+</Project>
