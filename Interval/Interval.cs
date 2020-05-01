@@ -6,17 +6,17 @@ namespace Interval
 
     public class Interval<TPoint>
     {
-        public LowerBound<TPoint> LowerBound { get; }
-
-        public UpperBound<TPoint> UpperBound { get; }
-
         public Interval(
-            LowerBound<TPoint> lowerBound,
-            UpperBound<TPoint> upperBound)
+            ILowerBound<TPoint> lowerBound,
+            IUpperBound<TPoint> upperBound)
         {
             this.LowerBound = lowerBound;
             this.UpperBound = upperBound;
         }
+
+        public ILowerBound<TPoint> LowerBound { get; }
+
+        public IUpperBound<TPoint> UpperBound { get; }
 
         public bool Contains(
             TPoint point,

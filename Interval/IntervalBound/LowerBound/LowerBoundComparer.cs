@@ -4,7 +4,7 @@ namespace Interval.IntervalBound.LowerBound
     using System.Collections.Generic;
 
     public class LowerBoundComparer<TPoint>
-        : IComparer<LowerBound<TPoint>>
+        : IComparer<ILowerBound<TPoint>>
     {
         private readonly IComparer<TPoint> pointComparer;
 
@@ -15,8 +15,8 @@ namespace Interval.IntervalBound.LowerBound
         }
 
         public int Compare(
-            LowerBound<TPoint> left,
-            LowerBound<TPoint> right)
+            ILowerBound<TPoint> left,
+            ILowerBound<TPoint> right)
         {
             switch (left)
             {
@@ -36,8 +36,10 @@ namespace Interval.IntervalBound.LowerBound
                     x: leftPointedBorder.Point,
                     y: rightPointedBorder.Point);
 
-            if (resultOfComparisonsPointedBorders != 0) return resultOfComparisonsPointedBorders;
-
+            if (resultOfComparisonsPointedBorders != 0)
+            {
+                return resultOfComparisonsPointedBorders;
+            }
 
             switch (left)
             {
@@ -50,7 +52,7 @@ namespace Interval.IntervalBound.LowerBound
                     return 1;
             }
 
-            throw new AggregateException("");
+            throw new AggregateException(string.Empty);
         }
     }
 }

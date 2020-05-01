@@ -3,7 +3,7 @@ namespace Interval.IntervalBound.UpperBound
     using System.Collections.Generic;
 
     public class OpenUpperBound<TPoint>
-        : UpperBound<TPoint>, IPointedBound<TPoint>
+        : IUpperBound<TPoint>, IPointedBound<TPoint>
     {
         public OpenUpperBound(
             TPoint point)
@@ -18,7 +18,9 @@ namespace Interval.IntervalBound.UpperBound
             IComparer<TPoint> comparer)
         {
             if (comparer.Compare(this.Point, point) >= 0)
+            {
                 return 1;
+            }
 
             return -1;
         }

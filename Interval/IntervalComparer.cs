@@ -20,17 +20,19 @@ namespace Interval
             Interval<TPoint> right)
         {
             var lowerBoundComparer = new LowerBoundComparer<TPoint>(
-                pointComparer: pointComparer);
+                pointComparer: this.pointComparer);
 
             var lowerBoundComparisonResult = lowerBoundComparer.Compare(
                 left: left.LowerBound,
                 right: right.LowerBound);
 
             if (lowerBoundComparisonResult != 0)
+            {
                 return lowerBoundComparisonResult;
+            }
 
             var upperBoundComparer = new UpperBoundComparer<TPoint>(
-                pointComparer: pointComparer);
+                pointComparer: this.pointComparer);
 
             return upperBoundComparer.Compare(
                 left: left.UpperBound,

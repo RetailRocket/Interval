@@ -4,7 +4,7 @@ namespace Interval.IntervalBound.UpperBound
     using System.Collections.Generic;
 
     public class UpperBoundComparer<TPoint>
-        : IComparer<UpperBound<TPoint>>
+        : IComparer<IUpperBound<TPoint>>
     {
         private readonly IComparer<TPoint> pointComparer;
 
@@ -15,8 +15,8 @@ namespace Interval.IntervalBound.UpperBound
         }
 
         public int Compare(
-            UpperBound<TPoint> left,
-            UpperBound<TPoint> right)
+            IUpperBound<TPoint> left,
+            IUpperBound<TPoint> right)
         {
             switch (left)
             {
@@ -36,7 +36,10 @@ namespace Interval.IntervalBound.UpperBound
                     x: leftPointedBorder.Point,
                     y: rightPointedBorder.Point);
 
-            if (resultOfComparisonsPointedBorders != 0) return resultOfComparisonsPointedBorders;
+            if (resultOfComparisonsPointedBorders != 0)
+            {
+                return resultOfComparisonsPointedBorders;
+            }
 
             switch (left)
             {
@@ -49,7 +52,7 @@ namespace Interval.IntervalBound.UpperBound
                     return -1;
             }
 
-            throw new AggregateException("");
+            throw new AggregateException(string.Empty);
         }
     }
 }

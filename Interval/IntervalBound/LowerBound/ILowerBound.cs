@@ -1,9 +1,9 @@
-namespace Interval.IntervalBound.UpperBound
+namespace Interval.IntervalBound.LowerBound
 {
     using System;
     using System.Collections.Generic;
 
-    public interface UpperBound<TPoint>
+    public interface ILowerBound<TPoint>
     {
         int CompareToPoint(
             TPoint point,

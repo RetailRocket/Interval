@@ -3,7 +3,7 @@ namespace Interval.IntervalBound.UpperBound
     using System.Collections.Generic;
 
     public class InfinityUpperBound<TPoint>
-        : UpperBound<TPoint>
+        : IUpperBound<TPoint>
     {
         public int CompareToPoint(
             TPoint point,

@@ -3,7 +3,7 @@ namespace Interval.IntervalBound.LowerBound
     using System.Collections.Generic;
 
     public class ClosedLowerBound<TPoint>
-        : LowerBound<TPoint>, IPointedBound<TPoint>
+        : ILowerBound<TPoint>, IPointedBound<TPoint>
     {
         public ClosedLowerBound(
             TPoint point)

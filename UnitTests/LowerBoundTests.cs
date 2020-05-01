@@ -1,10 +1,8 @@
-using System;
-using Xunit;
-
 namespace UnitTests
 {
     using System.Collections.Generic;
     using Interval.IntervalBound.LowerBound;
+    using Xunit;
 
     public class LowerBoundTests
     {
@@ -53,7 +51,6 @@ namespace UnitTests
                 comparisonsA);
         }
 
-
         [Theory]
         [InlineData(0, 1)]
         [InlineData(-100, -99)]
@@ -76,7 +73,6 @@ namespace UnitTests
                 comparisonsA);
         }
 
-
         [Theory]
         [InlineData(1, 0)]
         [InlineData(100, 99)]
@@ -97,7 +93,6 @@ namespace UnitTests
                 expected: 1,
                 comparisonsA);
         }
-
 
         [Theory]
         [InlineData(1, 0)]

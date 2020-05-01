@@ -3,7 +3,7 @@ namespace Interval.IntervalBound.LowerBound
     using System.Collections.Generic;
 
     public class InfinityLowerBound<TPoint>
-        : LowerBound<TPoint>
+        : ILowerBound<TPoint>
     {
         public int CompareToPoint(
             TPoint point,

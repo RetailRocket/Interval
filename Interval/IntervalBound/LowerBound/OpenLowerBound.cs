@@ -3,7 +3,7 @@ namespace Interval.IntervalBound.LowerBound
     using System.Collections.Generic;
 
     public class OpenLowerBound<TPoint>
-        : LowerBound<TPoint>, IPointedBound<TPoint>
+        : ILowerBound<TPoint>, IPointedBound<TPoint>
     {
         public OpenLowerBound(
             TPoint point)
@@ -18,7 +18,9 @@ namespace Interval.IntervalBound.LowerBound
             IComparer<TPoint> comparer)
         {
             if (comparer.Compare(this.Point, point) <= 0)
+            {
                 return -1;
+            }
 
             return 1;
         }

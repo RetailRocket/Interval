@@ -16,6 +16,7 @@
             Library for creating and comparing intervals. Library support three types of boundaries: open, closed and infinity for both sides.
         </PackageDescription>
         <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     </PropertyGroup>
     
     <PropertyGroup>
@@ -24,6 +25,10 @@
 
     <ItemGroup>
         <None Include="licenses\LICENSE.txt" Pack="true" PackagePath="LICENSE.txt" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" />
     </ItemGroup>
     
 </Project>
