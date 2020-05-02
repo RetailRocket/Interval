@@ -1,18 +1,17 @@
-namespace Interval
+namespace Operations.Comparers
 {
     using System.Collections.Generic;
-    using Interval.IntervalBound.LowerBound;
-    using Interval.IntervalBound.UpperBound;
+    using Interval;
 
     public class IntervalComparer<TPoint>
         : IComparer<Interval<TPoint>>
     {
-        private readonly IComparer<TPoint> pointComparer;
+        private readonly IComparer<TPoint> comparer;
 
         public IntervalComparer(
-            IComparer<TPoint> pointComparer)
+            IComparer<TPoint> comparer)
         {
-            this.pointComparer = pointComparer;
+            this.comparer = comparer;
         }
 
         public int Compare(
@@ -20,7 +19,7 @@ namespace Interval
             Interval<TPoint> right)
         {
             var lowerBoundComparer = new LowerBoundComparer<TPoint>(
-                pointComparer: this.pointComparer);
+                comparer: this.comparer);
 
             var lowerBoundComparisonResult = lowerBoundComparer.Compare(
                 left: left.LowerBound,
@@ -32,7 +31,7 @@ namespace Interval
             }
 
             var upperBoundComparer = new UpperBoundComparer<TPoint>(
-                pointComparer: this.pointComparer);
+                pointComparer: this.comparer);
 
             return upperBoundComparer.Compare(
                 left: left.UpperBound,

@@ -1,9 +1,9 @@
-namespace UnitTests.IntervalTests.Comparison
+namespace OperationsTests.ComparersTests.IntervalComparer
 {
     using System.Collections.Generic;
-    using Interval;
     using Interval.IntervalBound.LowerBound;
     using Interval.IntervalBound.UpperBound;
+    using Operations.Comparers;
     using Xunit;
 
     public class UpperBoundDoNotCountedIfLowerBoundLessTests
@@ -23,7 +23,7 @@ namespace UnitTests.IntervalTests.Comparison
             int result)
         {
             var intervalComparer = new IntervalComparer<int>(
-                pointComparer: Comparer<int>.Default);
+                comparer: Comparer<int>.Default);
 
             Assert.Equal(
                 expected: result,
@@ -51,7 +51,7 @@ namespace UnitTests.IntervalTests.Comparison
             int result)
         {
             var intervalComparer = new IntervalComparer<int>(
-                pointComparer: Comparer<int>.Default);
+                comparer: Comparer<int>.Default);
 
             Assert.Equal(
                 expected: result,
@@ -74,7 +74,7 @@ namespace UnitTests.IntervalTests.Comparison
             int rightUpperValue)
         {
             var intervalComparer = new IntervalComparer<int>(
-                pointComparer: Comparer<int>.Default);
+                comparer: Comparer<int>.Default);
 
             Assert.Equal(
                 expected: -1,
@@ -97,7 +97,7 @@ namespace UnitTests.IntervalTests.Comparison
             int rightUpperValue)
         {
             var intervalComparer = new IntervalComparer<int>(
-                pointComparer: Comparer<int>.Default);
+                comparer: Comparer<int>.Default);
 
             Assert.Equal(
                 expected: -1,

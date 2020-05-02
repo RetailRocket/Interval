@@ -2,7 +2,11 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interval", "Interval\Interval.csproj", "{54711AF9-AE7B-4507-BC6F-3409DF8DD2B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{AD0E6B4F-3C3B-46C7-A0FE-72C6614DB1AA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperationsTests", "OperationsTests\OperationsTests.csproj", "{AD0E6B4F-3C3B-46C7-A0FE-72C6614DB1AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Operations", "Operations\Operations.csproj", "{3077E3B1-A7D2-4EC8-807E-17CEAC417DD0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntervalTests", "IntervalTests\IntervalTests.csproj", "{F37189CB-6870-470C-8620-894083079450}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +22,13 @@ Global
 		{AD0E6B4F-3C3B-46C7-A0FE-72C6614DB1AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD0E6B4F-3C3B-46C7-A0FE-72C6614DB1AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD0E6B4F-3C3B-46C7-A0FE-72C6614DB1AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3077E3B1-A7D2-4EC8-807E-17CEAC417DD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3077E3B1-A7D2-4EC8-807E-17CEAC417DD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3077E3B1-A7D2-4EC8-807E-17CEAC417DD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3077E3B1-A7D2-4EC8-807E-17CEAC417DD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F37189CB-6870-470C-8620-894083079450}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F37189CB-6870-470C-8620-894083079450}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F37189CB-6870-470C-8620-894083079450}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F37189CB-6870-470C-8620-894083079450}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

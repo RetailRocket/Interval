@@ -1,7 +1,9 @@
-namespace Interval.IntervalBound.UpperBound
+namespace Operations.Comparers
 {
     using System;
     using System.Collections.Generic;
+    using Interval.IntervalBound;
+    using Interval.IntervalBound.UpperBound;
 
     public class UpperBoundComparer<TPoint>
         : IComparer<IUpperBound<TPoint>>

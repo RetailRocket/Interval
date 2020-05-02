@@ -5,3 +5,14 @@
 /BoolExpressions/bin
 /Interval/bin
 /Interval/obj
+/CenteredIntervalTree/obj
+/CenteredIntervalTree/bin
+/CenteredIntervalTreeTests/obj
+/CenteredIntervalTreeTests/bin
+/Operations/obj
+/Operations/bin
+/OperationsTests/obj
+/OperationsTests/bin
+/IntervalTests/obj
+/IntervalTests/bin
+/Interval.sln.DotSettings.user

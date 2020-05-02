@@ -18,6 +18,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Interval\Interval.csproj" />
+      <ProjectReference Include="..\Operations\Operations.csproj" />
     </ItemGroup>
 
 </Project>

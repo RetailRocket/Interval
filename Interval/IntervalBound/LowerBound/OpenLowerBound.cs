@@ -17,7 +17,7 @@ namespace Interval.IntervalBound.LowerBound
             TPoint point,
             IComparer<TPoint> comparer)
         {
-            if (comparer.Compare(this.Point, point) <= 0)
+            if (comparer.Compare(this.Point, point) < 0)
             {
                 return -1;
             }

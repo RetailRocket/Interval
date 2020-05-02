@@ -1,17 +1,19 @@
-namespace Interval.IntervalBound.LowerBound
+namespace Operations.Comparers
 {
     using System;
     using System.Collections.Generic;
+    using Interval.IntervalBound;
+    using Interval.IntervalBound.LowerBound;
 
     public class LowerBoundComparer<TPoint>
         : IComparer<ILowerBound<TPoint>>
     {
-        private readonly IComparer<TPoint> pointComparer;
+        private readonly IComparer<TPoint> comparer;
 
         public LowerBoundComparer(
-            IComparer<TPoint> pointComparer)
+            IComparer<TPoint> comparer)
         {
-            this.pointComparer = pointComparer;
+            this.comparer = comparer;
         }
 
         public int Compare(
@@ -31,7 +33,7 @@ namespace Interval.IntervalBound.LowerBound
             var leftPointedBorder = (IPointedBound<TPoint>)left;
             var rightPointedBorder = (IPointedBound<TPoint>)right;
 
-            var resultOfComparisonsPointedBorders = this.pointComparer
+            var resultOfComparisonsPointedBorders = this.comparer
                 .Compare(
                     x: leftPointedBorder.Point,
                     y: rightPointedBorder.Point);

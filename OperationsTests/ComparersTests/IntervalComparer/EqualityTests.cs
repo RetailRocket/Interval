@@ -1,9 +1,9 @@
-namespace UnitTests.IntervalTests.Comparison
+namespace OperationsTests.ComparersTests.IntervalComparer
 {
     using System.Collections.Generic;
-    using Interval;
     using Interval.IntervalBound.LowerBound;
     using Interval.IntervalBound.UpperBound;
+    using Operations.Comparers;
     using Xunit;
 
     public class EqualityTests
@@ -19,7 +19,7 @@ namespace UnitTests.IntervalTests.Comparison
             int upperBoundaryPoint)
         {
             var intervalComparer = new IntervalComparer<int>(
-                pointComparer: Comparer<int>.Default);
+                comparer: Comparer<int>.Default);
 
             var intervalA = new Interval.Interval<int>(
                 lowerBound: new ClosedLowerBound<int>(lowerBoundaryPoint),
@@ -47,7 +47,7 @@ namespace UnitTests.IntervalTests.Comparison
             int upperBoundaryPoint)
         {
             var intervalComparer = new IntervalComparer<int>(
-                pointComparer: Comparer<int>.Default);
+                comparer: Comparer<int>.Default);
 
             var intervalA = new Interval.Interval<int>(
                 lowerBound: new OpenLowerBound<int>(lowerBoundaryPoint),
@@ -75,7 +75,7 @@ namespace UnitTests.IntervalTests.Comparison
             int upperBoundaryPoint)
         {
             var intervalComparer = new IntervalComparer<int>(
-                pointComparer: Comparer<int>.Default);
+                comparer: Comparer<int>.Default);
 
             var intervalA = new Interval.Interval<int>(
                 lowerBound: new ClosedLowerBound<int>(lowerBoundaryPoint),
@@ -115,7 +115,7 @@ namespace UnitTests.IntervalTests.Comparison
             int boundaryPoint)
         {
             var intervalComparer = new IntervalComparer<int>(
-                pointComparer: Comparer<int>.Default);
+                comparer: Comparer<int>.Default);
 
             var intervalA = new Interval.Interval<int>(
                 lowerBound: new InfinityLowerBound<int>(),
@@ -150,7 +150,7 @@ namespace UnitTests.IntervalTests.Comparison
         public void InfinityBoundariesIntervalAreEqual()
         {
             var intervalComparer = new IntervalComparer<int>(
-                pointComparer: Comparer<int>.Default);
+                comparer: Comparer<int>.Default);
 
             var intervalA = new Interval.Interval<int>(
                 lowerBound: new InfinityLowerBound<int>(),
