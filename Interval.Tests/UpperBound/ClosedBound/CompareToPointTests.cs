@@ -1,4 +1,4 @@
-namespace IntervalTests.LowerBound.OpenBound
+namespace Interval.Tests.UpperBound.ClosedBound
 {
     using System.Collections.Generic;
     using Interval.IntervalBound.LowerBound;
@@ -15,7 +15,7 @@ namespace IntervalTests.LowerBound.OpenBound
             int lowerBoundPoint,
             int point)
         {
-            var closedLowerBound = new OpenLowerBound<int>(
+            var closedLowerBound = new ClosedLowerBound<int>(
                 point: lowerBoundPoint);
 
             Assert.True(
@@ -33,7 +33,7 @@ namespace IntervalTests.LowerBound.OpenBound
             int lowerBoundPoint,
             int point)
         {
-            var closedLowerBound = new OpenLowerBound<int>(
+            var closedLowerBound = new ClosedLowerBound<int>(
                 point: lowerBoundPoint);
 
             Assert.True(
@@ -48,16 +48,16 @@ namespace IntervalTests.LowerBound.OpenBound
         [InlineData(-1)]
         [InlineData(int.MinValue)]
         [InlineData(int.MaxValue)]
-        public void PointOnBoundIsRightToBound(
+        public void PointOnBound(
             int point)
         {
-            var closedLowerBound = new OpenLowerBound<int>(
+            var closedLowerBound = new ClosedLowerBound<int>(
                 point: point);
 
             Assert.True(
                 closedLowerBound.CompareToPoint(
                     point: point,
-                    comparer: Comparer<int>.Default) > 0);
+                    comparer: Comparer<int>.Default) == 0);
         }
     }
 }

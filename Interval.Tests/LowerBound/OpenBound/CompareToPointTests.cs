@@ -1,7 +1,7 @@
-namespace IntervalTests.UpperBound.OpenBound
+namespace Interval.Tests.LowerBound.OpenBound
 {
     using System.Collections.Generic;
-    using Interval.IntervalBound.UpperBound;
+    using Interval.IntervalBound.LowerBound;
     using Xunit;
 
     public class CompareToPointTests
@@ -15,11 +15,11 @@ namespace IntervalTests.UpperBound.OpenBound
             int lowerBoundPoint,
             int point)
         {
-            var closedUpperBound = new OpenUpperBound<int>(
+            var closedLowerBound = new OpenLowerBound<int>(
                 point: lowerBoundPoint);
 
             Assert.True(
-                closedUpperBound.CompareToPoint(
+                closedLowerBound.CompareToPoint(
                     point: point,
                     comparer: Comparer<int>.Default) > 0);
         }
@@ -33,11 +33,11 @@ namespace IntervalTests.UpperBound.OpenBound
             int lowerBoundPoint,
             int point)
         {
-            var closedUpperBound = new OpenUpperBound<int>(
+            var closedLowerBound = new OpenLowerBound<int>(
                 point: lowerBoundPoint);
 
             Assert.True(
-                closedUpperBound.CompareToPoint(
+                closedLowerBound.CompareToPoint(
                     point: point,
                     comparer: Comparer<int>.Default) < 0);
         }
@@ -48,16 +48,16 @@ namespace IntervalTests.UpperBound.OpenBound
         [InlineData(-1)]
         [InlineData(int.MinValue)]
         [InlineData(int.MaxValue)]
-        public void PointOnBoundIsLeftToBound(
+        public void PointOnBoundIsRightToBound(
             int point)
         {
-            var closedUpperBound = new OpenUpperBound<int>(
+            var closedLowerBound = new OpenLowerBound<int>(
                 point: point);
 
             Assert.True(
-                closedUpperBound.CompareToPoint(
+                closedLowerBound.CompareToPoint(
                     point: point,
-                    comparer: Comparer<int>.Default) < 0);
+                    comparer: Comparer<int>.Default) > 0);
         }
     }
 }

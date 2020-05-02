@@ -1,7 +1,7 @@
-namespace IntervalTests.UpperBound.InfinityBound
+namespace Interval.Tests.LowerBound.InfinityBound
 {
     using System.Collections.Generic;
-    using Interval.IntervalBound.UpperBound;
+    using Interval.IntervalBound.LowerBound;
     using Xunit;
 
     public class CompareToPointTests
@@ -16,15 +16,15 @@ namespace IntervalTests.UpperBound.InfinityBound
         [InlineData(-3)]
         [InlineData(int.MinValue)]
         [InlineData(int.MaxValue)]
-        public void AnyPointIsLeftToBound(
+        public void AnyPointIsRightToBound(
             int point)
         {
-            var infinityUpperBound = new InfinityUpperBound<int>();
+            var infinityLowerBound = new InfinityLowerBound<int>();
 
             Assert.True(
-                infinityUpperBound.CompareToPoint(
+                infinityLowerBound.CompareToPoint(
                     point: point,
-                    comparer: Comparer<int>.Default) > 0);
+                    comparer: Comparer<int>.Default) < 0);
         }
     }
 }

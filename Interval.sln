@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interval", "Interval\Interval.csproj", "{54711AF9-AE7B-4507-BC6F-3409DF8DD2B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntervalTests", "IntervalTests\IntervalTests.csproj", "{F37189CB-6870-470C-8620-894083079450}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interval.Tests", "Interval.Tests\Interval.Tests.csproj", "{F37189CB-6870-470C-8620-894083079450}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
