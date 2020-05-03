@@ -6,7 +6,7 @@ Generic library of types to describe interval of any points that can be compared
 
 ## Description ###
 
-Interval<TPoint> with lower and upper bounds. Each of bound can be of three types: Open, Close and Infinity. It alows to create this combinations of intervals:
+Interval<TPoint> with lower and upper bounds. Each of bound can be of three types: Open, Close and Infinity. It alows to create combinations of intervals:
   
 * closed [a, b]
 * open (a, b)
@@ -20,20 +20,25 @@ Interval<TPoint> with lower and upper bounds. Each of bound can be of three type
 Each boundary contains method CompareToPoint is allows to get position of point compare to boundary. For example point 0 with comparison to open lower bound of 0 will be less but for closed lower bound it will be equal. Infinity lower bound will be always less than any point but Infinity upper bound will be greater than any point.
 
 ## Usage ###
-### Closed Interval
+
+### Interval Boundaries
+
+Every interval have two boundaries, each have three possible types. It enable to have up to nine different intervals.
+
+#### Closed Interval
 ```csharp
 var closedInterval = new Interval.Interval<int>(
     lowerBound: new ClosedLowerBound<int>(0),
     upperBound: new ClosedUpperBound<int>(10));
 ```
-### Open Interval
+#### Open Interval
 ```csharp
 var closedInterval = new Interval.Interval<int>(
     lowerBound: new OpenLowerBound<int>(0),
     upperBound: new OpenUpperBound<int>(10));
 ```
 
-### Infinity Interval
+#### Infinity Interval
 ```csharp
 var closedInterval = new Interval.Interval<int>(
     lowerBound: new InfinityLowerBound<int>(),
@@ -42,10 +47,24 @@ var closedInterval = new Interval.Interval<int>(
 
 And you can combine bounds, for example
 
-### Open Closed Interval
+#### Open Closed Interval
 
 ```csharp
 var openClosedInterval = new Interval.Interval<int>(
     lowerBound: new OpenLowerBound<int>(0),
     upperBound: new ClosedUpperBound<int>(10));
+```
+
+etc.
+
+
+### Boundary Operation
+
+Every boundary can be compared to point by ```CompareToPoint``` method. Methor returns -1 boundary at the left, 1 if the boundary at the right and 0 if point on the boundary.
+
+```csharp
+  new ClosedLowerBound<int>(10)
+    .CompareToPoint(
+        point: 10,
+        comparer: Comparer<int>.Default); // > 0 - point is on the boundary
 ```
