@@ -21,15 +21,18 @@ namespace Interval.Tests
         public void SortLargeAmountOfIntervals()
         {
             var sw = Stopwatch.StartNew();
-            var r = new Random();
             var intervals = Enumerable.Repeat(0, 10_000_000)
-                .Select(_ => new Interval<int>(
-                    LowerBound<int>.Opened(r.Next()),
-                    UpperBound<int>.Closed(r.Next())))
+                .Select(_ => new Interval<string>(
+                    LowerBound<string>.Opened(Guid.NewGuid().ToString()),
+                    UpperBound<string>.Closed(Guid.NewGuid().ToString())))
                 .ToList();
+            var genTime = sw.Elapsed;
 
             var ordered = intervals.OrderBy(x => x).ToList();
             sw.Stop();
+            this.testOutputHelper.WriteLine("Gen time");
+            this.testOutputHelper.WriteLine(genTime.ToString());
+            this.testOutputHelper.WriteLine("Total time time");
             this.testOutputHelper.WriteLine(sw.Elapsed.ToString());
         }
     }
