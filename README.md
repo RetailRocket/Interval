@@ -70,3 +70,7 @@ Every boundary can be compared to point by ```CompareToPoint``` method. Methor r
         point: 10,
         comparer: Comparer<int>.Default); // > 0 - point is on the boundary
 ```
+
+### Additional Operation
+
+Additional operation you can find in library [Interval Operations](https://github.com/RetailRocket/Interval.Operations)
