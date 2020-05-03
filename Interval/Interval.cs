@@ -1,6 +1,9 @@
 namespace Interval
 {
-    public readonly struct Interval<TPoint>
+    using System;
+
+    public readonly struct Interval<TPoint> :
+        IComparable<Interval<TPoint>>
     {
         public Interval(
             LowerBound<TPoint> lowerBound,
@@ -13,5 +16,18 @@ namespace Interval
         public LowerBound<TPoint> LowerBound { get; }
 
         public UpperBound<TPoint> UpperBound { get; }
+
+        public int CompareTo(
+            Interval<TPoint> other)
+        {
+            var lowerBoundComparisonResult = this.LowerBound
+                .CompareTo(other.LowerBound);
+            if (lowerBoundComparisonResult != 0)
+            {
+                return lowerBoundComparisonResult;
+            }
+
+            return this.UpperBound.CompareTo(other.UpperBound);
+        }
     }
 }
