@@ -30,3 +30,20 @@ var closedInterval = new Interval.Interval<int>(
     lowerBound: new OpenLowerBound<int>(0),
     upperBound: new OpenUpperBound<int>(10));
 ```
+
+### Infinity Interval
+```csharp
+var closedInterval = new Interval.Interval<int>(
+    lowerBound: new InfinityLowerBound<int>(),
+    upperBound: new InfinityUpperBound<int>());
+```
+
+And you can combine bounds, for example
+
+### Open Closed Interval
+
+```csharp
+var openClosedInterval = new Interval.Interval<int>(
+    lowerBound: new OpenLowerBound<int>(0),
+    upperBound: new ClosedUpperBound<int>(10));
+```
