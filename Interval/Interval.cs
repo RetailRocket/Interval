@@ -1,9 +1,6 @@
 namespace Interval
 {
-    using Interval.IntervalBound.LowerBound;
-    using Interval.IntervalBound.UpperBound;
-
-    public struct Interval<TPoint>
+    public readonly struct Interval<TPoint>
     {
         public Interval(
             LowerBound<TPoint> lowerBound,
@@ -14,7 +11,6 @@ namespace Interval
         }
 
         public LowerBound<TPoint> LowerBound { get; }
-
 
         public UpperBound<TPoint> UpperBound { get; }
     }

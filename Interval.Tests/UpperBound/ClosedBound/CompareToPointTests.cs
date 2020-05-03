@@ -1,7 +1,6 @@
 namespace Interval.Tests.UpperBound.ClosedBound
 {
     using System.Collections.Generic;
-    using Interval.IntervalBound.LowerBound;
     using Xunit;
 
     public class CompareToPointTests
@@ -15,7 +14,7 @@ namespace Interval.Tests.UpperBound.ClosedBound
             int lowerBoundPoint,
             int point)
         {
-            var closedLowerBound = new ClosedLowerBound<int>(
+            var closedLowerBound = LowerBound<int>.Closed(
                 point: lowerBoundPoint);
 
             Assert.True(
@@ -33,7 +32,7 @@ namespace Interval.Tests.UpperBound.ClosedBound
             int lowerBoundPoint,
             int point)
         {
-            var closedLowerBound = new ClosedLowerBound<int>(
+            var closedLowerBound = LowerBound<int>.Closed(
                 point: lowerBoundPoint);
 
             Assert.True(
@@ -51,7 +50,7 @@ namespace Interval.Tests.UpperBound.ClosedBound
         public void PointOnBound(
             int point)
         {
-            var closedLowerBound = new ClosedLowerBound<int>(
+            var closedLowerBound = LowerBound<int>.Closed(
                 point: point);
 
             Assert.True(

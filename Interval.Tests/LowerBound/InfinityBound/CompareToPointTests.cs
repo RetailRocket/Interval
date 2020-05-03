@@ -1,7 +1,6 @@
 namespace Interval.Tests.LowerBound.InfinityBound
 {
     using System.Collections.Generic;
-    using Interval.IntervalBound.LowerBound;
     using Xunit;
 
     public class CompareToPointTests
@@ -19,7 +18,7 @@ namespace Interval.Tests.LowerBound.InfinityBound
         public void AnyPointIsRightToBound(
             int point)
         {
-            var infinityLowerBound = new InfinityLowerBound<int>();
+            var infinityLowerBound = LowerBound<int>.Infinity();
 
             Assert.True(
                 infinityLowerBound.CompareToPoint(

@@ -1,23 +1,24 @@
-namespace Interval.IntervalBound.LowerBound
+namespace Interval
 {
-    using System;
     using System.Collections.Generic;
 
-    public struct LowerBound<TPoint> where TPoint : struct, IComparable<TPoint>
+    public readonly struct LowerBound<TPoint>
     {
-        private bool IsOpened;
-        private TPoint? value;
-        private bool IsInfinity;
-
         private LowerBound(
             bool isOpened,
-            TPoint? value,
+            TPoint value,
             bool isInfinity)
         {
             this.IsOpened = isOpened;
-            this.value = value;
+            this.Value = value;
             this.IsInfinity = isInfinity;
         }
+
+        private bool IsOpened { get; }
+
+        private TPoint Value { get; }
+
+        private bool IsInfinity { get; }
 
         public static LowerBound<TPoint> Opened(TPoint point)
         {
@@ -35,12 +36,29 @@ namespace Interval.IntervalBound.LowerBound
                 isInfinity: false);
         }
 
-        public static LowerBound<TPoint> Infinity(TPoint point)
+        public static LowerBound<TPoint> Infinity()
         {
             return new LowerBound<TPoint>(
                 isOpened: true,
-                value: null,
+                value: default!,
                 isInfinity: true);
+        }
+
+        public int CompareToPoint(
+            TPoint point,
+            IComparer<TPoint> comparer)
+        {
+            if (this.IsInfinity)
+            {
+                return -1;
+            }
+
+            if (!this.IsOpened)
+            {
+                return comparer.Compare(this.Value, point);
+            }
+
+            return comparer.Compare(this.Value, point) == -1 ? -1 : 1;
         }
     }
 }
