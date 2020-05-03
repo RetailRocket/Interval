@@ -1,6 +1,7 @@
 namespace Interval.Tests.UpperBound.OpenBound
 {
     using System.Collections.Generic;
+    using Interval.IntervalBound.LowerBound;
     using Interval.IntervalBound.UpperBound;
     using Xunit;
 

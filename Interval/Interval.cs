@@ -3,18 +3,19 @@ namespace Interval
     using Interval.IntervalBound.LowerBound;
     using Interval.IntervalBound.UpperBound;
 
-    public class Interval<TPoint>
+    public struct Interval<TPoint>
     {
         public Interval(
-            ILowerBound<TPoint> lowerBound,
-            IUpperBound<TPoint> upperBound)
+            LowerBound<TPoint> lowerBound,
+            UpperBound<TPoint> upperBound)
         {
             this.LowerBound = lowerBound;
             this.UpperBound = upperBound;
         }
 
-        public ILowerBound<TPoint> LowerBound { get; }
+        public LowerBound<TPoint> LowerBound { get; }
 
-        public IUpperBound<TPoint> UpperBound { get; }
+
+        public UpperBound<TPoint> UpperBound { get; }
     }
 }

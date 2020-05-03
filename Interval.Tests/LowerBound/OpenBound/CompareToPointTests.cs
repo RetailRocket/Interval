@@ -1,5 +1,6 @@
 namespace Interval.Tests.LowerBound.OpenBound
 {
+    using System;
     using System.Collections.Generic;
     using Interval.IntervalBound.LowerBound;
     using Xunit;
