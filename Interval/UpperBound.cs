@@ -1,39 +1,66 @@
 namespace Interval
 {
+    using System;
     using System.Collections.Generic;
 
-    public readonly struct UpperBound<TPoint>
+    public readonly struct UpperBound<TPoint> :
+        IComparable<UpperBound<TPoint>>,
+        IComparable<TPoint>
     {
         private UpperBound(
             bool isOpened,
             TPoint value,
-            bool isInfinity)
+            bool isInfinity,
+            IComparer<TPoint> comparer)
         {
             this.IsOpened = isOpened;
             this.Value = value;
             this.IsInfinity = isInfinity;
+            this.Comparer = comparer;
         }
 
-        private bool IsOpened { get; }
+        public bool IsOpened { get; }
 
-        private TPoint Value { get; }
+        public TPoint Value { get; }
 
-        private bool IsInfinity { get; }
+        public bool IsInfinity { get; }
+
+        private IComparer<TPoint> Comparer { get; }
 
         public static UpperBound<TPoint> Opened(TPoint point)
+        {
+            return Opened(
+                point: point,
+                comparable: Comparer<TPoint>.Default);
+        }
+
+        public static UpperBound<TPoint> Opened(
+            TPoint point,
+            IComparer<TPoint> comparable)
         {
             return new UpperBound<TPoint>(
                 isOpened: true,
                 value: point,
-                isInfinity: false);
+                isInfinity: false,
+                comparer: comparable);
         }
 
         public static UpperBound<TPoint> Closed(TPoint point)
         {
+            return Closed(
+                point: point,
+                comparer: Comparer<TPoint>.Default);
+        }
+
+        public static UpperBound<TPoint> Closed(
+            TPoint point,
+            IComparer<TPoint> comparer)
+        {
             return new UpperBound<TPoint>(
                 isOpened: false,
                 value: point,
-                isInfinity: false);
+                isInfinity: false,
+                comparer: comparer);
         }
 
         public static UpperBound<TPoint> Infinity()
@@ -41,12 +68,23 @@ namespace Interval
             return new UpperBound<TPoint>(
                 isOpened: true,
                 value: default!,
-                isInfinity: true);
+                isInfinity: true,
+                comparer: Comparer<TPoint>.Default);
         }
 
-        public int CompareToPoint(
-            TPoint point,
-            IComparer<TPoint> comparer)
+        public int CompareTo(
+            UpperBound<TPoint> other)
+        {
+            if (this.IsInfinity)
+            {
+                return other.IsInfinity ? 0 : -1;
+            }
+
+            return this.CompareTo(other.Value);
+        }
+
+        public int CompareTo(
+            TPoint other)
         {
             if (this.IsInfinity)
             {
@@ -55,10 +93,10 @@ namespace Interval
 
             if (!this.IsOpened)
             {
-                return comparer.Compare(this.Value, point);
+                return this.Comparer.Compare(this.Value, other);
             }
 
-            return comparer.Compare(this.Value, point) == 1 ? 1 : -1;
+            return this.Comparer.Compare(this.Value, other) == 1 ? 1 : -1;
         }
     }
 }

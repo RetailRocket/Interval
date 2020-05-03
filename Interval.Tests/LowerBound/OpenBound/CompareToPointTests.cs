@@ -18,9 +18,8 @@ namespace Interval.Tests.LowerBound.OpenBound
                 point: lowerBoundPoint);
 
             Assert.True(
-                closedLowerBound.CompareToPoint(
-                    point: point,
-                    comparer: Comparer<int>.Default) > 0);
+                closedLowerBound.CompareTo(
+                    other: point) > 0);
         }
 
         [Theory]
@@ -36,9 +35,8 @@ namespace Interval.Tests.LowerBound.OpenBound
                 point: lowerBoundPoint);
 
             Assert.True(
-                closedLowerBound.CompareToPoint(
-                    point: point,
-                    comparer: Comparer<int>.Default) < 0);
+                closedLowerBound.CompareTo(
+                    other: point) < 0);
         }
 
         [Theory]
@@ -54,9 +52,8 @@ namespace Interval.Tests.LowerBound.OpenBound
                 point: point);
 
             Assert.True(
-                closedLowerBound.CompareToPoint(
-                    point: point,
-                    comparer: Comparer<int>.Default) > 0);
+                closedLowerBound.CompareTo(
+                    other: point) > 0);
         }
     }
 }

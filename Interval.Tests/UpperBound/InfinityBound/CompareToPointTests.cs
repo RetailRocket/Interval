@@ -21,9 +21,8 @@ namespace Interval.Tests.UpperBound.InfinityBound
             var infinityUpperBound = UpperBound<int>.Infinity();
 
             Assert.True(
-                infinityUpperBound.CompareToPoint(
-                    point: point,
-                    comparer: Comparer<int>.Default) > 0);
+                infinityUpperBound.CompareTo(
+                    other: point) > 0);
         }
     }
 }
