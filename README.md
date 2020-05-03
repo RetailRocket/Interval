@@ -7,7 +7,9 @@ Generic library of types to describe interval of any points that can be compared
 ## Description ###
 
 Interval<TPoint> with lower and upper bounds. Each of bound can be of three types: Open, Close and Infinity. It alows to create combinations of intervals:
-  
+
+![](readme/images/intervals.png)
+
 * closed [a, b]
 * open (a, b)
 * openClosed (a, b]
