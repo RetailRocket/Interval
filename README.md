@@ -8,21 +8,14 @@ Generic library of types to describe interval of any points that can be compared
 
 Interval<TPoint> with lower and upper bounds. Each of bound can be of three types: Open, Close and Infinity. It alows to create this combinations of intervals:
   
-closed [a, b]
-
-open (a, b)
-
-openClosed (a, b]
-
-closedOpen [a, b)
-
-infinityOpen [∞, a)
-
-infinityClosed [∞, a]
-
-openInfinity (a, ∞]
-
-closedInfinity [a, ∞)
+** closed [a, b]
+** open (a, b)
+** openClosed (a, b]
+** closedOpen [a, b)
+** infinityOpen [∞, a)
+** infinityClosed [∞, a]
+** openInfinity (a, ∞]
+** closedInfinity [a, ∞)
 
 ## Usage ###
 ### Closed Interval
