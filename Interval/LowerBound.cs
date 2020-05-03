@@ -7,25 +7,22 @@ namespace Interval
         IComparable<LowerBound<TPoint>>,
         IComparable<TPoint>
     {
+        private readonly bool isOpened;
+        private readonly TPoint value;
+        private readonly bool isInfinity;
+        private readonly IComparer<TPoint> comparer;
+
         private LowerBound(
             bool isOpened,
             TPoint value,
             bool isInfinity,
             IComparer<TPoint> comparer)
         {
-            this.IsOpened = isOpened;
-            this.Value = value;
-            this.IsInfinity = isInfinity;
-            this.Comparer = comparer;
+            this.isOpened = isOpened;
+            this.value = value;
+            this.isInfinity = isInfinity;
+            this.comparer = comparer;
         }
-
-        private bool IsOpened { get; }
-
-        private TPoint Value { get; }
-
-        private bool IsInfinity { get; }
-
-        private IComparer<TPoint> Comparer { get; }
 
         public static LowerBound<TPoint> Opened(
             TPoint point)
@@ -76,28 +73,28 @@ namespace Interval
         public int CompareTo(
             LowerBound<TPoint> other)
         {
-            if (this.IsInfinity)
+            if (this.isInfinity)
             {
-                return other.IsInfinity ? 0 : -1;
+                return other.isInfinity ? 0 : -1;
             }
 
-            return this.CompareTo(other.Value);
+            return this.CompareTo(other.value);
         }
 
         public int CompareTo(
             TPoint other)
         {
-            if (this.IsInfinity)
+            if (this.isInfinity)
             {
                 return -1;
             }
 
-            if (!this.IsOpened)
+            if (!this.isOpened)
             {
-                return this.Comparer.Compare(this.Value, other);
+                return this.comparer.Compare(this.value, other);
             }
 
-            return this.Comparer.Compare(this.Value, other) == -1 ? -1 : 1;
+            return this.comparer.Compare(this.value, other) == -1 ? -1 : 1;
         }
     }
 }
