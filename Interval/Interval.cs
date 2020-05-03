@@ -1,20 +1,33 @@
 namespace Interval
 {
-    using Interval.IntervalBound.LowerBound;
-    using Interval.IntervalBound.UpperBound;
+    using System;
 
-    public class Interval<TPoint>
+    public readonly struct Interval<TPoint> :
+        IComparable<Interval<TPoint>>
     {
         public Interval(
-            ILowerBound<TPoint> lowerBound,
-            IUpperBound<TPoint> upperBound)
+            LowerBound<TPoint> lowerBound,
+            UpperBound<TPoint> upperBound)
         {
             this.LowerBound = lowerBound;
             this.UpperBound = upperBound;
         }
 
-        public ILowerBound<TPoint> LowerBound { get; }
+        public LowerBound<TPoint> LowerBound { get; }
 
-        public IUpperBound<TPoint> UpperBound { get; }
+        public UpperBound<TPoint> UpperBound { get; }
+
+        public int CompareTo(
+            Interval<TPoint> other)
+        {
+            var lowerBoundComparisonResult = this.LowerBound
+                .CompareTo(other.LowerBound);
+            if (lowerBoundComparisonResult != 0)
+            {
+                return lowerBoundComparisonResult;
+            }
+
+            return this.UpperBound.CompareTo(other.UpperBound);
+        }
     }
 }

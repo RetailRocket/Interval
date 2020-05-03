@@ -1,7 +1,6 @@
 namespace Interval.Tests.UpperBound.InfinityBound
 {
     using System.Collections.Generic;
-    using Interval.IntervalBound.UpperBound;
     using Xunit;
 
     public class CompareToPointTests
@@ -19,12 +18,11 @@ namespace Interval.Tests.UpperBound.InfinityBound
         public void AnyPointIsLeftToBound(
             int point)
         {
-            var infinityUpperBound = new InfinityUpperBound<int>();
+            var infinityUpperBound = UpperBound<int>.Infinity();
 
             Assert.True(
-                infinityUpperBound.CompareToPoint(
-                    point: point,
-                    comparer: Comparer<int>.Default) > 0);
+                infinityUpperBound.CompareTo(
+                    other: point) > 0);
         }
     }
 }
