@@ -17,7 +17,7 @@ Interval<TPoint> with lower and upper bounds. Each of bound can be of three type
 * openInfinity (a, ∞]
 * closedInfinity [a, ∞)
 
-Each boundary contains method CompareToPoint is allows to get position of point compare to boundary. For example point 0 with comparison to open lower bound of 0 will be less but for closed lower bound it will be equal. Infinity lower bound will be always less than any point but Infinity upper bound will be greater than any point.
+Each boundary contains method ```CompareToPoint``` is allows to get position of point compare to boundary. For example point 0 with comparison to open lower bound of 0 will be less but for closed lower bound it will be equal. Infinity lower bound will be always less than any point but Infinity upper bound will be greater than any point.
 
 ## Usage ###
 
