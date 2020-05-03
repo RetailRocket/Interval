@@ -4,7 +4,7 @@
 
 Generic library of types to describe interval of any points that can be compared to eachother. The library is as small as possible to be useful. I've created it to use in my own implimentation of [Iterval Centered Tree] (https://github.com/RetailRocket/CenteredIntervalTree). To do it I was need a couple of additional operation which I've implemented in external library of [Interval Operations](https://github.com/RetailRocket/Interval.Operations) on purpose to keep this library clear.
 
-## Type ###
+## Description ###
 
 Interval<TPoint> with lower and upper bounds. Each of bound can be of three types: Open, Close and Infinity. It alows to create this combinations of intervals:
   
@@ -18,7 +18,15 @@ openInfinity (a, ∞]
 closedInfinity [a, ∞)
 
 ## Usage ###
-### Closed interval
+### Closed Interval
 ```csharp
-
+var closedInterval = new Interval.Interval<int>(
+    lowerBound: new ClosedLowerBound<int>(0),
+    upperBound: new ClosedUpperBound<int>(10));
+```
+### Open Interval
+```csharp
+var closedInterval = new Interval.Interval<int>(
+    lowerBound: new OpenLowerBound<int>(0),
+    upperBound: new OpenUpperBound<int>(10));
 ```
