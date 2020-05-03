@@ -1,4 +1,5 @@
 ![.NET Core](https://github.com/RetailRocket/Interval/workflows/.NET%20Core/badge.svg)
+[![NuGet version](https://img.shields.io/nuget/v/Interval.svg?style=flat-square)](https://www.nuget.org/packages/Interval/)
 
 # Interval
 
