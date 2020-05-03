@@ -1,4 +1,24 @@
 ![.NET Core](https://github.com/RetailRocket/Interval/workflows/.NET%20Core/badge.svg)
 
 # Interval
-Library for creating and comparing intervals. Library support three types of interval boundaries: open, closed and infinity for both sides. 
+
+Generic library of types to describe interval of any points that can be compared to eachother. The library is as small as possible to be useful. I've created it to use in my own implimentation of [Iterval Centered Tree] (https://github.com/RetailRocket/CenteredIntervalTree). To do it I was need a couple of additional operation which I've implemented in external library of [Interval Operations](https://github.com/RetailRocket/Interval.Operations) on purpose to keep this library clear.
+
+## Type ###
+
+Interval<TPoint> with lower and upper bounds. Each of bound can be of three types: Open, Close and Infinity. It alows to create this combinations of intervals:
+  
+closed [a, b]
+open (a, b)
+openClosed (a, b]
+closedOpen [a, b)
+infinityOpen [∞, a)
+infinityClosed [∞, a]
+openInfinity (a, ∞]
+closedInfinity [a, ∞)
+
+## Usage ###
+### Closed interval
+```csharp
+
+```
