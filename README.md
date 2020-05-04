@@ -14,7 +14,7 @@ Each boundary contains method ```CompareToPoint``` it allows to get position of 
 Interval type is generic type and can have boundaries point of any type, but for comparison operation you will need to have comparer class for point type
 
 ```csharp
-var closedInterval = new Interval<int>(
+var interval = new Interval<int>(
     lowerBound: ...,
     upperBound: ...
 );
@@ -46,7 +46,7 @@ Both boundaries points are not inculded to the interval
 (a, b) = {x | a < x < b}
 
 ```csharp
-var closedInterval = new Interval.Interval<int>(
+var openInterval = new Interval<int>(
     lowerBound: new OpenLowerBound<int>(0),
     upperBound: new OpenUpperBound<int>(10));
 ```
@@ -59,7 +59,7 @@ This interval include any point
 (∞, ∞) = {x | ∞ < x < ∞}
 
 ```csharp
-var closedInterval = new Interval<int>(
+var infinityInterval = new Interval<int>(
     lowerBound: new InfinityLowerBound<int>(),
     upperBound: new InfinityUpperBound<int>());
 ```
@@ -87,7 +87,7 @@ Lower boundary point is included to the interval, upper bound is not
 [a, b) = {x | a <= x < b}
 
 ```csharp
-var openClosedInterval = new Interval<int>(
+var closedOpenInterval = new Interval<int>(
     lowerBound: new ClosedLowerBound<int>(0),
     upperBound: new OpenUpperBound<int>(10));
 ```
@@ -100,7 +100,7 @@ Lower boundary is infinity and any point of the interval is more than it boundar
 (∞, a) = {x | ∞ < x < b}
 
 ```csharp
-var openClosedInterval = new Interval<int>(
+var infinityOpenInterval = new Interval<int>(
     lowerBound: new InfinityLowerBound<int>(0),
     upperBound: new OpenUpperBound<int>(10));
 ```
@@ -114,7 +114,7 @@ Lower boundary is infinity and any point of the interval is more than it boundar
 (∞, a) = {x | ∞ < x <= b}
 
 ```csharp
-var openClosedInterval = new Interval<int>(
+var infinityClosedInterval = new Interval<int>(
     lowerBound: new InfinityLowerBound<int>(0),
     upperBound: new ClosedUpperBound<int>(10));
 ```
@@ -127,7 +127,7 @@ Lower boundary point is not included to the interval, upper bound is infinity an
 (a, ∞) = {x | a < x < ∞}
 
 ```csharp
-var openClosedInterval = new Interval<int>(
+var openInfinityInterval = new Interval<int>(
     lowerBound: new OpenUpperBound<int>(0),
     upperBound: new InfinityUpperBound<int>(10));
 ```
@@ -140,7 +140,7 @@ Lower boundary point is included to the interval, upper bound is infinity and an
 [a, ∞) = {x | a <= x < ∞}
 
 ```csharp
-var openClosedInterval = new Interval<int>(
+var closedInfinityInterval = new Interval<int>(
     lowerBound: new ClosedUpperBound<int>(0),
     upperBound: new InfinityUpperBound<int>(10));
 ```
