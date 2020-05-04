@@ -52,6 +52,12 @@ var closedInterval = new Interval.Interval<int>(
 ```
 
 #### Infinity Interval
+This interval include any point
+
+![](readme/images/infinity.png)
+
+(∞, ∞) = {x | ∞ < x < ∞}
+
 ```csharp
 var closedInterval = new Interval<int>(
     lowerBound: new InfinityLowerBound<int>(),
@@ -91,7 +97,7 @@ Lower boundary is infinity and any point of the interval is more than it boundar
 
 ![](readme/images/infinityOpen.png)
 
-[∞, a) = {x | ∞ < x < b}
+(∞, a) = {x | ∞ < x < b}
 
 ```csharp
 var openClosedInterval = new Interval<int>(
@@ -105,7 +111,7 @@ Lower boundary is infinity and any point of the interval is more than it boundar
 
 ![](readme/images/infinityClosed.png)
 
-[∞, a) = {x | ∞ < x <= b}
+(∞, a) = {x | ∞ < x <= b}
 
 ```csharp
 var openClosedInterval = new Interval<int>(
@@ -118,7 +124,7 @@ Lower boundary point is not included to the interval, upper bound is infinity an
 
 ![](readme/images/openInfinity.png)
 
-(a, ∞] = {x | a < x < ∞}
+(a, ∞) = {x | a < x < ∞}
 
 ```csharp
 var openClosedInterval = new Interval<int>(
