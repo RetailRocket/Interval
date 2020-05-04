@@ -9,16 +9,57 @@ Generic library of types to describe interval of any points that can be compared
 
 Interval<TPoint> with lower and upper bounds. Each of bound can be of three types: Open, Close and Infinity. It alows to create combinations of intervals:
 
-![](readme/images/intervals.png)
+#### Closed 
+Both boundary points are inculded to interval
 
-* closed [a, b]
-* open (a, b)
-* openClosed (a, b]
-* closedOpen [a, b)
-* infinityOpen [∞, a)
-* infinityClosed [∞, a]
-* openInfinity (a, ∞]
-* closedInfinity [a, ∞)
+![](readme/images/closed.png)
+
+[a, b] = {x | a <= x <= b}
+
+#### Open
+Both boundary points are not inculded to interval
+
+![](readme/images/open.png)
+
+(a, b) = {x | a < x < b}
+
+#### openClosed (a, b]
+Lower bound is not included to interval, upper bound is included to interval
+
+![](readme/images/openClosed.png)
+
+(a, b] = {x | a < x <= b}
+
+#### closedOpen [a, b)
+
+![](readme/images/closedOpen.png)
+
+[a, b) = {x | a <= x < b}
+
+#### infinityOpen 
+
+![](readme/images/infinityOpen.png)
+
+[∞, a) = {x | ∞ < x < b}
+
+
+#### infinityClosed [∞, a]
+
+![](readme/images/infinityClosed.png)
+
+[∞, a) = {x | ∞ < x <= b}
+
+#### openInfinity
+
+![](readme/images/openInfinity.png)
+
+(a, ∞] = {x | a < x < ∞}
+
+#### closedInfinity 
+
+![](readme/images/closedInfinity.png)
+
+[a, ∞) = {x | a <= x < ∞}
 
 Each boundary contains method ```CompareToPoint``` is allows to get position of point compare to boundary. For example point 0 with comparison to open lower bound of 0 will be less but for closed lower bound it will be equal. Infinity lower bound will be always less than any point but Infinity upper bound will be greater than any point.
 
