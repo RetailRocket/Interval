@@ -10,18 +10,21 @@ Generic library of types to describe interval of any points that can be compared
 Interval<TPoint> with lower and upper bounds. Each of bound can be of three types: Open, Close and Infinity. It alows to create combinations of intervals:
 
 #### Closed 
+Both boundary points are inculded to interval
 
 ![](readme/images/closed.png)
 
 [a, b] = {x | a <= x <= b}
 
 #### Open
+Both boundary points are not inculded to interval
 
 ![](readme/images/open.png)
 
 (a, b) = {x | a < x < b}
 
 #### openClosed (a, b]
+Lower bound is not included to interval, upper bound is included to interval
 
 ![](readme/images/openClosed.png)
 
