@@ -9,11 +9,18 @@ Generic library of types to describe interval of any points that can be compared
 
 Interval<TPoint> with lower and upper bounds. Each of bound can be of three types: Open, Close and Infinity. It alows to create combinations of intervals:
 
-![](readme/images/intervals.png)
+* closed 
+![](readme/images/closed.png)
+[a, b] = {x | a <= x <= b}
 
-* closed [a, b]
-* open (a, b)
+* open
+![](readme/images/open.png)
+(a, b) = {x | a < x < b}
+
 * openClosed (a, b]
+![](readme/images/openClosed.png)
+(a, b] = {x | a < x <= b}
+
 * closedOpen [a, b)
 * infinityOpen [∞, a)
 * infinityClosed [∞, a]
