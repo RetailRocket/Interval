@@ -10,33 +10,35 @@ Generic library of types to describe interval of any points that can be compared
 Interval<TPoint> with lower and upper bounds. Each of bound can be of three types: Open, Close and Infinity. It alows to create combinations of intervals:
 
 #### Closed 
-Both boundary points are inculded to interval
+Both boundaries points are inculded to theinterval
 
 ![](readme/images/closed.png)
 
 [a, b] = {x | a <= x <= b}
 
 #### Open
-Both boundary points are not inculded to interval
+Both boundaries points are not inculded to the interval
 
 ![](readme/images/open.png)
 
 (a, b) = {x | a < x < b}
 
 #### openClosed (a, b]
-Lower bound is not included to interval, upper bound is included to interval
+Lower boundary point is not included to the interval, upper bound is included to the interval
 
 ![](readme/images/openClosed.png)
 
 (a, b] = {x | a < x <= b}
 
 #### closedOpen [a, b)
+Lower boundary point is included to the interval, upper bound is not
 
 ![](readme/images/closedOpen.png)
 
 [a, b) = {x | a <= x < b}
 
 #### infinityOpen 
+Lower boundary is infinity and any point of the interval is more than it boundary, upper boundary point is not included to the interval
 
 ![](readme/images/infinityOpen.png)
 
@@ -44,18 +46,21 @@ Lower bound is not included to interval, upper bound is included to interval
 
 
 #### infinityClosed [∞, a]
+Lower boundary is infinity and any point of the interval is more than it boundary, upper boundary point is included to the interval
 
 ![](readme/images/infinityClosed.png)
 
 [∞, a) = {x | ∞ < x <= b}
 
 #### openInfinity
+Lower boundary point is not included to the interval, upper bound is infinity and any point of interval is less that it boundary
 
 ![](readme/images/openInfinity.png)
 
 (a, ∞] = {x | a < x < ∞}
 
 #### closedInfinity 
+Lower boundary point is included to the interval, upper bound is infinity and any point of interval is less that it boundary
 
 ![](readme/images/closedInfinity.png)
 
