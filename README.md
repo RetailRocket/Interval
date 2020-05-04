@@ -74,16 +74,16 @@ Each boundary contains method ```CompareToPoint``` is allows to get position of 
 
 Interval type is generic type and can have boundaries point of any type, but for comparison operation you will need to have comparer class for point type
 
-### Interval Boundaries
-
-Interval type have two boundaries, each of them have three possible types. It enable to have up to nine different intervals.
-
 ```csharp
 var closedInterval = new Interval<int>(
     lowerBound: ...,
     upperBound: ...
 );
 ```
+
+### Interval Boundaries
+
+Interval type have two boundaries, each of them have three possible types. It enable to have up to nine different intervals.
 
 #### Closed Interval
 ```csharp
