@@ -70,13 +70,24 @@ Each boundary contains method ```CompareToPoint``` is allows to get position of 
 
 ## Usage ###
 
+### Interval 
+
+Interval type is generic type and can have boundaries point of any type, but for comparison operation you will need to have comparer class for point type
+
 ### Interval Boundaries
 
-Every interval have two boundaries, each have three possible types. It enable to have up to nine different intervals.
+Interval type have two boundaries, each of them have three possible types. It enable to have up to nine different intervals.
+
+```csharp
+var closedInterval = new Interval<int>(
+    lowerBound: ...,
+    upperBound: ...
+);
+```
 
 #### Closed Interval
 ```csharp
-var closedInterval = new Interval.Interval<int>(
+var closedInterval = new Interval<int>(
     lowerBound: new ClosedLowerBound<int>(0),
     upperBound: new ClosedUpperBound<int>(10));
 ```
@@ -89,7 +100,7 @@ var closedInterval = new Interval.Interval<int>(
 
 #### Infinity Interval
 ```csharp
-var closedInterval = new Interval.Interval<int>(
+var closedInterval = new Interval<int>(
     lowerBound: new InfinityLowerBound<int>(),
     upperBound: new InfinityUpperBound<int>());
 ```
@@ -99,7 +110,7 @@ And you can combine bounds, for example
 #### Open Closed Interval
 
 ```csharp
-var openClosedInterval = new Interval.Interval<int>(
+var openClosedInterval = new Interval<int>(
     lowerBound: new OpenLowerBound<int>(0),
     upperBound: new ClosedUpperBound<int>(10));
 ```
