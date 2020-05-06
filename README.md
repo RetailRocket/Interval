@@ -5,102 +5,145 @@
 
 Generic library of types to describe interval of any points that can be compared to eachother. The library is as small as possible to be useful. I've created it to use in my own implimentation of [Iterval Centered Tree](https://github.com/RetailRocket/CenteredIntervalTree). To do it I was need a couple of additional operation which I've implemented in external library of [Interval Operations](https://github.com/RetailRocket/Interval.Operations) on purpose to keep this library clear.
 
-## Description ###
+Each boundary contains method ```CompareToPoint``` it allows to get position of point compare to boundary. For example point 0 with comparison to open lower bound of 0 will be less but for closed lower bound it will be equal. Infinity lower bound will be always less than any point but Infinity upper bound will be greater than any point.
 
-Interval<TPoint> with lower and upper bounds. Each of bound can be of three types: Open, Close and Infinity. It alows to create combinations of intervals:
+## Usage ###
 
-#### Closed 
-Both boundary points are inculded to interval
+### Interval 
+
+Interval type is generic type and can have boundaries point of any type, but for comparison operation you will need to have comparer class for point type
+
+```csharp
+var interval = new Interval<int>(
+    lowerBound: ...,
+    upperBound: ...
+);
+```
+
+### Interval Boundaries
+
+Interval type have two boundaries, each of them have three possible types. It enable to have up to nine different intervals.
+
+#### Closed Interval
+
+Both boundaries points are inculded to theinterval
 
 ![](readme/images/closed.png)
 
 [a, b] = {x | a <= x <= b}
 
-#### Open
-Both boundary points are not inculded to interval
+```csharp
+var closedInterval = new Interval<int>(
+    lowerBound: new ClosedLowerBound<int>(0),
+    upperBound: new ClosedUpperBound<int>(10));
+```
+#### Open Interval
+
+Both boundaries points are not inculded to the interval
 
 ![](readme/images/open.png)
 
 (a, b) = {x | a < x < b}
 
-#### openClosed (a, b]
-Lower bound is not included to interval, upper bound is included to interval
-
-![](readme/images/openClosed.png)
-
-(a, b] = {x | a < x <= b}
-
-#### closedOpen [a, b)
-
-![](readme/images/closedOpen.png)
-
-[a, b) = {x | a <= x < b}
-
-#### infinityOpen 
-
-![](readme/images/infinityOpen.png)
-
-[∞, a) = {x | ∞ < x < b}
-
-
-#### infinityClosed [∞, a]
-
-![](readme/images/infinityClosed.png)
-
-[∞, a) = {x | ∞ < x <= b}
-
-#### openInfinity
-
-![](readme/images/openInfinity.png)
-
-(a, ∞] = {x | a < x < ∞}
-
-#### closedInfinity 
-
-![](readme/images/closedInfinity.png)
-
-[a, ∞) = {x | a <= x < ∞}
-
-Each boundary contains method ```CompareToPoint``` is allows to get position of point compare to boundary. For example point 0 with comparison to open lower bound of 0 will be less but for closed lower bound it will be equal. Infinity lower bound will be always less than any point but Infinity upper bound will be greater than any point.
-
-## Usage ###
-
-### Interval Boundaries
-
-Every interval have two boundaries, each have three possible types. It enable to have up to nine different intervals.
-
-#### Closed Interval
 ```csharp
-var closedInterval = new Interval.Interval<int>(
-    lowerBound: new ClosedLowerBound<int>(0),
-    upperBound: new ClosedUpperBound<int>(10));
-```
-#### Open Interval
-```csharp
-var closedInterval = new Interval.Interval<int>(
+var openInterval = new Interval<int>(
     lowerBound: new OpenLowerBound<int>(0),
     upperBound: new OpenUpperBound<int>(10));
 ```
 
 #### Infinity Interval
+This interval include any point
+
+![](readme/images/infinity.png)
+
+(∞, ∞) = {x | ∞ < x < ∞}
+
 ```csharp
-var closedInterval = new Interval.Interval<int>(
+var infinityInterval = new Interval<int>(
     lowerBound: new InfinityLowerBound<int>(),
     upperBound: new InfinityUpperBound<int>());
 ```
 
-And you can combine bounds, for example
+And you can combine bounds
 
 #### Open Closed Interval
+Lower boundary point is not included to the interval, upper bound is included to the interval
+
+![](readme/images/openClosed.png)
+
+(a, b] = {x | a < x <= b}
 
 ```csharp
-var openClosedInterval = new Interval.Interval<int>(
+var openClosedInterval = new Interval<int>(
     lowerBound: new OpenLowerBound<int>(0),
     upperBound: new ClosedUpperBound<int>(10));
 ```
 
-etc.
+#### Closed Open Interval
+Lower boundary point is included to the interval, upper bound is not
 
+![](readme/images/closedOpen.png)
+
+[a, b) = {x | a <= x < b}
+
+```csharp
+var closedOpenInterval = new Interval<int>(
+    lowerBound: new ClosedLowerBound<int>(0),
+    upperBound: new OpenUpperBound<int>(10));
+```
+
+### Infinity Open Interval
+Lower boundary is infinity and any point of the interval is more than it boundary, upper boundary point is not included to the interval
+
+![](readme/images/infinityOpen.png)
+
+(∞, a) = {x | ∞ < x < b}
+
+```csharp
+var infinityOpenInterval = new Interval<int>(
+    lowerBound: new InfinityLowerBound<int>(0),
+    upperBound: new OpenUpperBound<int>(10));
+```
+
+
+### Infinity Closed Interval
+Lower boundary is infinity and any point of the interval is more than it boundary, upper boundary point is included to the interval
+
+![](readme/images/infinityClosed.png)
+
+(∞, a) = {x | ∞ < x <= b}
+
+```csharp
+var infinityClosedInterval = new Interval<int>(
+    lowerBound: new InfinityLowerBound<int>(0),
+    upperBound: new ClosedUpperBound<int>(10));
+```
+
+### Open Infinity Interval
+Lower boundary point is not included to the interval, upper bound is infinity and any point of interval is less that it boundary
+
+![](readme/images/openInfinity.png)
+
+(a, ∞) = {x | a < x < ∞}
+
+```csharp
+var openInfinityInterval = new Interval<int>(
+    lowerBound: new OpenUpperBound<int>(0),
+    upperBound: new InfinityUpperBound<int>(10));
+```
+
+### Closed Infinity Interval
+Lower boundary point is included to the interval, upper bound is infinity and any point of interval is less that it boundary
+
+![](readme/images/closedInfinity.png)
+
+[a, ∞) = {x | a <= x < ∞}
+
+```csharp
+var closedInfinityInterval = new Interval<int>(
+    lowerBound: new ClosedUpperBound<int>(0),
+    upperBound: new InfinityUpperBound<int>(10));
+```
 
 ### Boundary Operation
 
