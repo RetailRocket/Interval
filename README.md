@@ -157,7 +157,7 @@ Every boundary can be compared to point by ```CompareToPoint``` method. Methor r
   new ClosedLowerBound<int>(10)
     .CompareToPoint(
         point: 10,
-        comparer: Comparer<int>.Default); // > 0 - point is on the boundary
+        comparer: Comparer<int>.Default); // == 0 - point is on the boundary
 ```
 
 ### Additional Operation
