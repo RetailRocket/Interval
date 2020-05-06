@@ -7,6 +7,10 @@ Generic library of types to describe interval of any points that can be compared
 
 Each boundary contains method ```CompareToPoint``` it allows to get position of point compare to boundary. For example point 0 with comparison to open lower bound of 0 will be less but for closed lower bound it will be equal. Infinity lower bound will be always less than any point but Infinity upper bound will be greater than any point.
 
+## Model ##
+
+![alternative text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/RetailRocket/Interval/master/readme/plantuml/DomainModel.puml)
+
 ## Usage ###
 
 ### Interval 
