@@ -1,0 +1,54 @@
+@startuml
+class Interval {
+    LowerBound: LowerBound<T>
+    UpperBound: UpperBound<T>
+}
+    
+
+abstract PointedBound {
+    TPoint Point
+}
+
+abstract LowerBound {
+    CompareToPoint(TPoint point) : int
+}
+
+class OpenLowerBound {
+}
+
+class ClosedLowerBound {
+}
+
+class InfinityLowerBound {
+}
+
+LowerBound <|-- OpenLowerBound
+PointedBound <|-- OpenLowerBound
+LowerBound <|-- ClosedLowerBound
+PointedBound <|-- ClosedLowerBound
+LowerBound <|-- InfinityLowerBound
+
+Interval "1"..."1" LowerBound
+
+abstract UpperBound {
+    CompareToPoint(TPoint point) : int
+}
+
+class OpenUpperBound {
+}
+
+class ClosedUpperBound {
+}
+
+class InfinityUpperBound {
+}
+
+UpperBound <|-- OpenUpperBound
+PointedBound <|-- OpenUpperBound
+UpperBound <|-- ClosedUpperBound
+PointedBound <|-- ClosedUpperBound
+UpperBound <|-- InfinityUpperBound
+
+Interval "1"..."1" UpperBound
+
+@enduml
