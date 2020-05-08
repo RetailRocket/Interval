@@ -26,7 +26,7 @@ var interval = new Interval<int>(
 
 ### Interval Boundaries
 
-Interval type have two boundaries, each of them have three possible types. It enable to have up to nine different intervals.
+Each of interval boundaries can be one of three possible types. It enable to have up to nine different intervals.
 
 #### Closed Interval
 
@@ -105,7 +105,7 @@ Lower boundary is infinity and any point of the interval is more than it boundar
 
 ```csharp
 var infinityOpenInterval = new Interval<int>(
-    lowerBound: new InfinityLowerBound<int>(0),
+    lowerBound: new InfinityLowerBound<int>(),
     upperBound: new OpenUpperBound<int>(10));
 ```
 
@@ -119,7 +119,7 @@ Lower boundary is infinity and any point of the interval is more than it boundar
 
 ```csharp
 var infinityClosedInterval = new Interval<int>(
-    lowerBound: new InfinityLowerBound<int>(0),
+    lowerBound: new InfinityLowerBound<int>(),
     upperBound: new ClosedUpperBound<int>(10));
 ```
 
