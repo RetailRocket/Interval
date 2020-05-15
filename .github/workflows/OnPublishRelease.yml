@@ -1,0 +1,38 @@
+name: On Publish Release
+
+on:
+  release:
+    types: published
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+    - name: Test
+      run: dotnet test --no-restore
+    - name: Set output
+      id: vars
+      run: echo ::set-output name=tag::${GITHUB_REF:10}
+    - name: Pack Nuget Package
+      env:
+        RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
+      run: dotnet pack
+              --configuration Release
+               -p:NuspecFile=pack.nuspec
+               -p:NuspecProperties="version=$RELEASE_VERSION"
+    - name: Publish Nuget Package
+      env:
+        NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
+      run: dotnet nuget push ./Interval/bin/Release/Interval.$RELEASE_VERSION.nupkg
+              --source https://api.nuget.org/v3/index.json
+              --api-key "$NUGET_API_KEY"

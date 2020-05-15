@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package>
+    <metadata>
+        <id>Interval</id>
+        <authors>Artem Noskov, Andrey Chizh</authors>
+        <owners>Artem Noskov, Andrey Chizh</owners>
+        <version>0.0.1</version>
+        <projectUrl>https://github.com/RetailRocket/Interval</projectUrl>
+        <license type="file">LICENSE.txt</license>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Interval Library Project. Generic interval type with low and upper boundaries types. Each boundary can be closed, open or infinity. Boundary has one method witch allow to compare it with point. Additionaly to this labrary there is labrary with operations.</description>
+        <copyright>Artem Noskov, Andrey Chizh</copyright>
+        <repository type="git" url="https://github.com/RetailRocket/Interval" />
+        <dependencies>
+            <group targetFramework="netcoreapp3.1" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="licenses\LICENSE.txt" target="" />
+        <file src="bin\Release\netcoreapp3.1\*.dll" target="lib/netcoreapp3.1"/>
+    </files>
+</package>

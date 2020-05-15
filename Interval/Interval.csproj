@@ -3,7 +3,6 @@
     <PropertyGroup>
         <LangVersion>8</LangVersion>
         <Nullable>enable</Nullable>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageVersion>0.0.1</PackageVersion>
         <Authors>Andrey Chizh, Artem Noskov</Authors>
         <Company>Retail Rocket</Company>
