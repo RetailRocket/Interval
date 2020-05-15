@@ -4,6 +4,7 @@ namespace Interval
     using Interval.IntervalBound.UpperBound;
 
     public class Interval<TPoint>
+        : IInterval<TPoint>
     {
         public Interval(
             ILowerBound<TPoint> lowerBound,
