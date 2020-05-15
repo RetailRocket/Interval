@@ -6,7 +6,7 @@ namespace Interval
     public class Interval<TPoint>
         : IInterval<TPoint>
     {
-        public Interval(
+        internal Interval(
             ILowerBound<TPoint> lowerBound,
             IUpperBound<TPoint> upperBound)
         {
