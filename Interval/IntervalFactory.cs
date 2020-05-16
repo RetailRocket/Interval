@@ -1,8 +1,6 @@
 namespace Interval
 {
-    using System;
     using System.Collections.Generic;
-    using Interval.IntervalBound;
     using Interval.IntervalBound.LowerBound;
     using Interval.IntervalBound.UpperBound;
 
@@ -11,71 +9,23 @@ namespace Interval
         public static IInterval<TPoint> Build<TPoint>(
             ILowerBound<TPoint> lowerBound,
             IUpperBound<TPoint> upperBound,
-            IComparer<TPoint> comparer)
+            IComparer<TPoint> comparer) => (lowerBound, upperBound) switch
         {
-            if (lowerBound is IPointedBound<TPoint> lb && upperBound is IPointedBound<TPoint> ub)
-            {
-                var pointComparisonResult = comparer.Compare(lb.Point, ub.Point);
-                if (pointComparisonResult > 0)
-                {
-                    throw new ArgumentException();
-                }
+            (ILowerPointedBound<TPoint> lpb, IUpperPointedBound<TPoint> upb) =>
+            BuildPointedInterval(lpb, upb, comparer),
+            _ => new Interval<TPoint>(lowerBound, upperBound)
+        };
 
-                if (pointComparisonResult == 0)
-                {
-                    if (lowerBound is OpenLowerBound<TPoint> && upperBound is OpenUpperBound<TPoint>)
-                    {
-                        throw new ArgumentException();
-                    }
-
-                    return new EmptyInterval<TPoint>();
-                }
-            }
-
-            return new Interval<TPoint>(
-                lowerBound: lowerBound,
-                upperBound: upperBound);
-        }
-
-        public static IInterval<TPoint> BuildClosedInterval<TPoint>(
-            TPoint lowerBoundaryPoint,
-            TPoint upperBoundaryPoint,
-            IComparer<TPoint> comparer)
+        public static IInterval<TPoint> BuildPointedInterval<TPoint>(
+            ILowerPointedBound<TPoint> lpb,
+            IUpperPointedBound<TPoint> upb,
+            IComparer<TPoint> comparer) => (lowerPointedBound: lpb, upperPointedBound: upb) switch
         {
-            return new Interval<TPoint>(
-                lowerBound: new ClosedLowerBound<TPoint>(lowerBoundaryPoint),
-                upperBound: new ClosedUpperBound<TPoint>(upperBoundaryPoint));
-        }
-
-        public static IInterval<TPoint> BuildOpenInterval<TPoint>(
-            TPoint lowerBoundaryPoint,
-            TPoint upperBoundaryPoint,
-            IComparer<TPoint> comparer)
-        {
-            return new Interval<TPoint>(
-                lowerBound: new OpenLowerBound<TPoint>(lowerBoundaryPoint),
-                upperBound: new OpenUpperBound<TPoint>(upperBoundaryPoint));
-        }
-
-        public static IInterval<TPoint> BuildOpenClosedInterval<TPoint>(
-            TPoint lowerBoundaryPoint,
-            TPoint upperBoundaryPoint,
-            IComparer<TPoint> comparer)
-        {
-            return new Interval<TPoint>(
-                lowerBound: new OpenLowerBound<TPoint>(lowerBoundaryPoint),
-                upperBound: new ClosedUpperBound<TPoint>(upperBoundaryPoint));
-        }
-
-        public static IInterval<TPoint> BuildClosedOpenInterval<TPoint>(
-            TPoint lowerBoundaryPoint,
-            TPoint upperBoundaryPoint,
-            IComparer<TPoint> comparer)
-        {
-            return new Interval<TPoint>(
-                lowerBound: new ClosedLowerBound<TPoint>(lowerBoundaryPoint),
-                upperBound: new OpenUpperBound<TPoint>(upperBoundaryPoint));
-        }
+            _ when comparer.Compare(lpb.Point, upb.Point) > 0 => new EmptyInterval<TPoint>(),
+            (ClosedLowerBound<TPoint> _, ClosedUpperBound<TPoint> _) => new Interval<TPoint>(lpb, upb),
+            _ when comparer.Compare(lpb.Point, upb.Point) == 0 => new EmptyInterval<TPoint>(),
+            _ => new Interval<TPoint>(lpb, upb)
+        };
 
         public static Interval<TPoint> BuildInfinityInterval<TPoint>()
         {
@@ -114,6 +64,50 @@ namespace Interval
             return new Interval<TPoint>(
                 lowerBound: new ClosedLowerBound<TPoint>(lowerBoundaryPoint),
                 upperBound: new InfinityUpperBound<TPoint>());
+        }
+
+        public static IInterval<TPoint> BuildClosedInterval<TPoint>(
+            TPoint lowerBoundaryPoint,
+            TPoint upperBoundaryPoint,
+            IComparer<TPoint> comparer)
+        {
+            return BuildPointedInterval(
+                lpb: new ClosedLowerBound<TPoint>(lowerBoundaryPoint),
+                upb: new ClosedUpperBound<TPoint>(upperBoundaryPoint),
+                comparer: comparer);
+        }
+
+        public static IInterval<TPoint> BuildOpenInterval<TPoint>(
+            TPoint lowerBoundaryPoint,
+            TPoint upperBoundaryPoint,
+            IComparer<TPoint> comparer)
+        {
+            return BuildPointedInterval(
+                lpb: new OpenLowerBound<TPoint>(lowerBoundaryPoint),
+                upb: new OpenUpperBound<TPoint>(upperBoundaryPoint),
+                comparer: comparer);
+        }
+
+        public static IInterval<TPoint> BuildOpenClosedInterval<TPoint>(
+            TPoint lowerBoundaryPoint,
+            TPoint upperBoundaryPoint,
+            IComparer<TPoint> comparer)
+        {
+            return BuildPointedInterval(
+                lpb: new OpenLowerBound<TPoint>(lowerBoundaryPoint),
+                upb: new ClosedUpperBound<TPoint>(upperBoundaryPoint),
+                comparer: comparer);
+        }
+
+        public static IInterval<TPoint> BuildClosedOpenInterval<TPoint>(
+            TPoint lowerBoundaryPoint,
+            TPoint upperBoundaryPoint,
+            IComparer<TPoint> comparer)
+        {
+            return BuildPointedInterval(
+                lpb: new ClosedLowerBound<TPoint>(lowerBoundaryPoint),
+                upb: new OpenUpperBound<TPoint>(upperBoundaryPoint),
+                comparer: comparer);
         }
     }
 }

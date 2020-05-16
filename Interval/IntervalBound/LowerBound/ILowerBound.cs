@@ -1,6 +1,5 @@
 namespace Interval.IntervalBound.LowerBound
 {
-    using System;
     using System.Collections.Generic;
 
     public interface ILowerBound<TPoint>

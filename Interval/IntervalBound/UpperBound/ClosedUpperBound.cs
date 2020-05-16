@@ -3,7 +3,7 @@ namespace Interval.IntervalBound.UpperBound
     using System.Collections.Generic;
 
     public class ClosedUpperBound<TPoint>
-        : IUpperBound<TPoint>, IPointedBound<TPoint>
+        : IUpperPointedBound<TPoint>
     {
         public ClosedUpperBound(
             TPoint point)

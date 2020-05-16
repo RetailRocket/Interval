@@ -2,8 +2,8 @@ namespace Interval.IntervalBound.LowerBound
 {
     using System.Collections.Generic;
 
-    public class OpenLowerBound<TPoint>
-        : ILowerBound<TPoint>, IPointedBound<TPoint>
+    public class OpenLowerBound<TPoint> :
+        ILowerPointedBound<TPoint>
     {
         public OpenLowerBound(
             TPoint point)

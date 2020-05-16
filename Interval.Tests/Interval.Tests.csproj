@@ -17,4 +17,8 @@
       <ProjectReference Include="..\Interval\Interval.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="IntersectOperation" />
+    </ItemGroup>
+
 </Project>

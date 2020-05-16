@@ -2,9 +2,9 @@ namespace Interval.IntervalBound.UpperBound
 {
     using System.Collections.Generic;
 
-    public class OpenUpperBound<TPoint>
-        : IUpperBound<TPoint>, IPointedBound<TPoint>
-    {
+    public class OpenUpperBound<TPoint> :
+        IUpperPointedBound<TPoint>
+{
         public OpenUpperBound(
             TPoint point)
         {
