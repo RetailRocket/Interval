@@ -160,6 +160,15 @@ Every boundary can be compared to point by ```CompareToPoint``` method. Methor r
         comparer: Comparer<int>.Default); // == 0 - point is on the boundary
 ```
 
-### Additional Operation
+Every lower boundary can be compared to another lower boundary by ``Comapre`` method
 
-Additional operation you can find in library [Interval Operations](https://github.com/RetailRocket/Interval.Operations)
+```csharp
+  new ClosedLowerBound<int>(10)
+    .Compare(
+        another: new ClosedLowerBound<int>(11),
+        comparer: Comparer<int>.Default); // == 0 - point is on the boundary
+```
+
+### Interval Operation
+
+

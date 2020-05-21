@@ -1,16 +1,31 @@
 @startuml
+
+abstract IInterval {
+    LowerBound: LowerBound<T>
+    UpperBound: UpperBound<T>
+---
+Intersect(another:IInterval<T>):IInterval<T>
+}
+
+class EmptyInterval {
+}
+
 class Interval {
     LowerBound: LowerBound<T>
     UpperBound: UpperBound<T>
 }
-    
 
-abstract PointedBound {
-    TPoint Point
+abstract LowerPointedBound {
+    Point: TPoint 
+}
+
+abstract UpperPointedBound {
+    Point: TPoint
 }
 
 abstract LowerBound {
-    CompareToPoint(TPoint point) : int
+    CompareToPoint(point: TPoint) : int
+    Compare(another: LowerBound<TPoint>): int
 }
 
 class OpenLowerBound {
@@ -22,16 +37,21 @@ class ClosedLowerBound {
 class InfinityLowerBound {
 }
 
+IInterval <|-- EmptyInterval
+IInterval <|-- Interval
+
+
 LowerBound <|-- OpenLowerBound
-PointedBound <|-- OpenLowerBound
+LowerPointedBound <|-- OpenLowerBound
 LowerBound <|-- ClosedLowerBound
-PointedBound <|-- ClosedLowerBound
+LowerPointedBound <|-- ClosedLowerBound
 LowerBound <|-- InfinityLowerBound
 
 Interval "1"..."1" LowerBound
 
 abstract UpperBound {
-    CompareToPoint(TPoint point) : int
+    CompareToPoint(point: TPoint) : int
+    Compare(another: UpperBound<TPoint>): int
 }
 
 class OpenUpperBound {
@@ -44,9 +64,9 @@ class InfinityUpperBound {
 }
 
 UpperBound <|-- OpenUpperBound
-PointedBound <|-- OpenUpperBound
+UpperPointedBound <|-- OpenUpperBound
 UpperBound <|-- ClosedUpperBound
-PointedBound <|-- ClosedUpperBound
+UpperPointedBound <|-- ClosedUpperBound
 UpperBound <|-- InfinityUpperBound
 
 Interval "1"..."1" UpperBound

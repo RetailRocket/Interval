@@ -28,8 +28,8 @@ namespace Interval
             IInterval<TPoint> rightInterval,
             IComparer<TPoint> comparer) => (leftInterval, rightInterval) switch
         {
-            (Interval<TPoint> leftNotEmptyInterval, Interval<TPoint> rightNotEmptyInterval) => leftNotEmptyInterval
-                .Intersect(rightNotEmptyInterval, comparer),
+            (Interval<TPoint> leftNotEmptyInterval, Interval<TPoint> rightNotEmptyInterval)
+            => leftNotEmptyInterval.Intersect(rightNotEmptyInterval, comparer),
             _ => new EmptyInterval<TPoint>()
         };
     }
