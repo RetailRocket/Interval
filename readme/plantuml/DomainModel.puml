@@ -1,8 +1,6 @@
 @startuml
 
 abstract IInterval {
-    LowerBound: LowerBound<T>
-    UpperBound: UpperBound<T>
 ---
 Intersect(another:IInterval<T>):IInterval<T>
 }
