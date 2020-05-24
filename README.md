@@ -165,7 +165,17 @@ Every lower boundary can be compared to another lower boundary by ``Comapre`` me
 ```csharp
   new ClosedLowerBound<int>(10)
     .Compare(
-        another: new ClosedLowerBound<int>(11),
+        another: new OpenLowerBound<int>(11),
+        comparer: Comparer<int>.Default); // == 0 - point is on the boundary
+```
+
+
+And every upper boundary can be compared to another upper boundary by ``Comapre`` method
+
+```csharp
+  new OpenUpperBound<int>(10)
+    .Compare(
+        another: new ClosedUpperBound<int>(11),
         comparer: Comparer<int>.Default); // == 0 - point is on the boundary
 ```
 

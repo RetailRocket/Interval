@@ -6,6 +6,7 @@ namespace Interval.IntervalBound
 
     public class LowerBoundComparer<TPoint>
         : IComparer<ILowerBound<TPoint>>
+        where TPoint : notnull
     {
         private readonly IComparer<TPoint> comparer;
 

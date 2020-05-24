@@ -45,7 +45,7 @@ LowerBound <|-- ClosedLowerBound
 LowerPointedBound <|-- ClosedLowerBound
 LowerBound <|-- InfinityLowerBound
 
-Interval "1"..."1" LowerBound
+Interval o-- LowerBound
 
 abstract UpperBound {
     CompareToPoint(point: TPoint) : int
@@ -67,6 +67,6 @@ UpperBound <|-- ClosedUpperBound
 UpperPointedBound <|-- ClosedUpperBound
 UpperBound <|-- InfinityUpperBound
 
-Interval "1"..."1" UpperBound
+Interval o-- UpperBound
 
 @enduml

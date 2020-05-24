@@ -9,11 +9,12 @@ namespace Interval
             this Interval<TPoint> leftInterval,
             Interval<TPoint> rightInterval,
             IComparer<TPoint> comparer)
+            where TPoint : notnull
         {
             var lowerBoundComparer = new LowerBoundComparer<TPoint>(comparer);
             var upperBoundComparer = new UpperBoundComparer<TPoint>(comparer);
 
-            return IntervalFactory.Build<TPoint>(
+            return IntervalFactory.Build(
                 lowerBound: lowerBoundComparer.Compare(leftInterval.LowerBound, rightInterval.LowerBound) >= 0
                     ? leftInterval.LowerBound
                     : rightInterval.LowerBound,
@@ -26,7 +27,8 @@ namespace Interval
         public static IInterval<TPoint> Intersect<TPoint>(
             this IInterval<TPoint> leftInterval,
             IInterval<TPoint> rightInterval,
-            IComparer<TPoint> comparer) => (leftInterval, rightInterval) switch
+            IComparer<TPoint> comparer)
+            where TPoint : notnull => (leftInterval, rightInterval) switch
         {
             (Interval<TPoint> leftNotEmptyInterval, Interval<TPoint> rightNotEmptyInterval)
             => leftNotEmptyInterval.Intersect(rightNotEmptyInterval, comparer),

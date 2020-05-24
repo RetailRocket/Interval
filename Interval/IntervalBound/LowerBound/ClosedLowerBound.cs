@@ -4,6 +4,7 @@ namespace Interval.IntervalBound.LowerBound
 
     public class ClosedLowerBound<TPoint> :
         ILowerPointedBound<TPoint>
+        where TPoint : notnull
     {
         public ClosedLowerBound(
             TPoint point)
@@ -18,6 +19,22 @@ namespace Interval.IntervalBound.LowerBound
             IComparer<TPoint> comparer)
         {
             return comparer.Compare(this.Point, point);
+        }
+
+        public override int GetHashCode()
+            => this.Point
+                .GetHashCode();
+
+        public override bool Equals(
+            object? obj)
+        {
+            return obj is OpenLowerBound<TPoint> key && this.Equals(key);
+        }
+
+        public bool Equals(
+            OpenLowerBound<TPoint> other)
+        {
+            return other != null && EqualityComparer<TPoint>.Default.Equals(this.Point, other.Point);
         }
     }
 }

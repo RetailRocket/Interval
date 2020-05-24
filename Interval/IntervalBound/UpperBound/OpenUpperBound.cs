@@ -4,7 +4,8 @@ namespace Interval.IntervalBound.UpperBound
 
     public class OpenUpperBound<TPoint> :
         IUpperPointedBound<TPoint>
-{
+        where TPoint : notnull
+    {
         public OpenUpperBound(
             TPoint point)
         {
@@ -23,6 +24,22 @@ namespace Interval.IntervalBound.UpperBound
             }
 
             return -1;
+        }
+
+        public override int GetHashCode()
+            => this.Point
+                .GetHashCode();
+
+        public override bool Equals(
+            object? obj)
+        {
+            return obj is OpenUpperBound<TPoint> key && this.Equals(key);
+        }
+
+        public bool Equals(
+            OpenUpperBound<TPoint> other)
+        {
+            return other != null && EqualityComparer<TPoint>.Default.Equals(this.Point, other.Point);
         }
     }
 }
