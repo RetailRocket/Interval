@@ -1,8 +1,9 @@
-namespace Interval.Tests.IntersectOperation
+namespace Interval.Tests.Operations.Intersect
 {
     using System.Collections.Generic;
     using Interval.IntervalBound.LowerBound;
     using Interval.IntervalBound.UpperBound;
+    using Interval.Operations;
     using Xunit;
     using IntervalFactory = Interval.IntervalFactory;
 

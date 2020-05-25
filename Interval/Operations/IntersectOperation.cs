@@ -1,4 +1,4 @@
-namespace Interval
+namespace Interval.Operations
 {
     using System.Collections.Generic;
     using Interval.IntervalBound;
