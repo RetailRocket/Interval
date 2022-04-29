@@ -20,7 +20,7 @@ namespace Interval.IntervalBound.UpperBound
         }
 
         public override bool Equals(
-            object? obj)
+            object obj)
         {
             return obj is InfinityUpperBound<TPoint>;
         }

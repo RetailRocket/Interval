@@ -26,7 +26,7 @@ namespace Interval.IntervalBound.UpperBound
                 .GetHashCode();
 
         public override bool Equals(
-            object? obj)
+            object obj)
         {
             return obj is ClosedUpperBound<TPoint> key && this.Equals(key);
         }

@@ -16,7 +16,7 @@ namespace Interval
         }
 
         public override bool Equals(
-            object? obj)
+            object obj)
         {
             return obj is EmptyInterval<TPoint>;
         }

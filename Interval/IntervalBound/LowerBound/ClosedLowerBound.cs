@@ -26,7 +26,7 @@ namespace Interval.IntervalBound.LowerBound
                 .GetHashCode();
 
         public override bool Equals(
-            object? obj)
+            object obj)
         {
             return obj is OpenLowerBound<TPoint> key && this.Equals(key);
         }
@@ -34,7 +34,7 @@ namespace Interval.IntervalBound.LowerBound
         public bool Equals(
             OpenLowerBound<TPoint> other)
         {
-            return other != null && EqualityComparer<TPoint>.Default.Equals(this.Point, other.Point);
+            return EqualityComparer<TPoint>.Default.Equals(this.Point, other.Point);
         }
     }
 }

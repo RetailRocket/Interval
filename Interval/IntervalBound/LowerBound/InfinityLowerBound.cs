@@ -20,7 +20,7 @@ namespace Interval.IntervalBound.LowerBound
         }
 
         public override bool Equals(
-            object? obj)
+            object obj)
         {
             return obj is InfinityLowerBound<TPoint>;
         }

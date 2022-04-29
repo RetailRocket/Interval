@@ -31,7 +31,7 @@ namespace Interval.IntervalBound.LowerBound
                 .GetHashCode();
 
         public override bool Equals(
-            object? obj)
+            object obj)
         {
             return obj is OpenLowerBound<TPoint> key && this.Equals(key);
         }

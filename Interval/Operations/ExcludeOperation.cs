@@ -13,7 +13,8 @@ namespace Interval.Operations
             IComparer<TPoint> comparer)
             where TPoint : notnull
         {
-            var orderedExclusions = pointSet.OrderBy(
+            var orderedExclusions = pointSet
+                .OrderBy(
                     key => key,
                     comparer: comparer)
                 .Where(
@@ -21,27 +22,32 @@ namespace Interval.Operations
                         point: p,
                         comparer: comparer));
 
-            ILowerBound<TPoint> lowerBound = interval.LowerBound;
+            var lowerBound = interval.LowerBound;
             var upperBound = interval.UpperBound;
 
             var intervalList = new List<IInterval<TPoint>>();
 
             foreach (var exclude in orderedExclusions)
             {
-                intervalList.Add(IntervalFactory.Build(
-                    lowerBound: lowerBound,
-                    upperBound: new OpenUpperBound<TPoint>(
-                        point: exclude),
-                    comparer: comparer));
+                intervalList.Add(
+                    item: IntervalFactory
+                        .Build(
+                            lowerBound: lowerBound,
+                            upperBound: new OpenUpperBound<TPoint>(
+                                point: exclude),
+                            comparer: comparer));
 
                 lowerBound = new OpenLowerBound<TPoint>(
                     point: exclude);
             }
 
-            intervalList.Add(IntervalFactory.Build(
-                lowerBound: lowerBound,
-                upperBound: upperBound,
-                comparer: Comparer<TPoint>.Default));
+            intervalList
+                .Add(
+                    item: IntervalFactory
+                        .Build(
+                            lowerBound: lowerBound,
+                            upperBound: upperBound,
+                            comparer: Comparer<TPoint>.Default));
 
             return intervalList
                 .OfType<Interval<TPoint>>()

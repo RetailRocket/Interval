@@ -132,7 +132,7 @@ Lower boundary point is not included to the interval, upper bound is infinity an
 
 ```csharp
 var openInfinityInterval = new Interval<int>(
-    lowerBound: new OpenUpperBound<int>(0),
+    lowerBound: new OpenLowerBound<int>(0),
     upperBound: new InfinityUpperBound<int>(10));
 ```
 
@@ -145,7 +145,7 @@ Lower boundary point is included to the interval, upper bound is infinity and an
 
 ```csharp
 var closedInfinityInterval = new Interval<int>(
-    lowerBound: new ClosedUpperBound<int>(0),
+    lowerBound: new ClosedLowerBound<int>(0),
     upperBound: new InfinityUpperBound<int>(10));
 ```
 

@@ -35,7 +35,7 @@ namespace Interval
                 this.UpperBound.GetHashCode());
 
         public override bool Equals(
-            object? obj)
+            object obj)
         {
             return obj is Interval<TPoint> interval && this.Equals(interval);
         }
